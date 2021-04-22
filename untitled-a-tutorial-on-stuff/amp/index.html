@@ -1,16 +1,674 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Philip Etter: Professional Blog]]></title><description><![CDATA[Applied Mathematics and Data Science]]></description><link>https://uniqueuptopermutation.github.io/</link><image><url>https://uniqueuptopermutation.github.io/favicon.png</url><title>Philip Etter: Professional Blog</title><link>https://uniqueuptopermutation.github.io/</link></image><generator>Ghost 4.3</generator><lastBuildDate>Thu, 22 Apr 2021 22:51:42 GMT</lastBuildDate><atom:link href="https://uniqueuptopermutation.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Tutorial: Differential Equations from Stochastic Processes]]></title><description><![CDATA[<!--kg-card-begin: markdown--><h4 id="by-philip-etter">by Philip Etter</h4>
-<p>A quick tutorial on the deep connection between elliptic/parabolic systems and stochastic processes. The connection gives a lot of useful intuition about how to interpret elliptic/parabolic PDEs as well as Laplacian systems on graphs. Let us begin by looking at a very special case:</p>
-<h2 id="introduction">Introduction</h2>]]></description><link>https://uniqueuptopermutation.github.io/untitled-a-tutorial-on-stuff/</link><guid isPermaLink="false">60809506807fac83024baf9d</guid><dc:creator><![CDATA[Philip Etter]]></dc:creator><pubDate>Wed, 21 Apr 2021 23:32:04 GMT</pubDate><content:encoded><![CDATA[<!--kg-card-begin: markdown--><h4 id="by-philip-etter">by Philip Etter</h4>
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Tutorial: Differential Equations from Stochastic Processes</title>
+
+    <link rel="canonical" href="https://uniqueuptopermutation.github.io/untitled-a-tutorial-on-stuff/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Philip Etter: Professional Blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Tutorial: Differential Equations from Stochastic Processes" />
+    <meta property="og:description" content="by Philip Etter A quick tutorial on the deep connection between elliptic/parabolic systems and stochastic processes. The connection gives a lot of useful intuition about how to interpret elliptic/parabolic PDEs as well as Laplacian systems on graphs. Let us begin by looking at a very special case:  Introduction" />
+    <meta property="og:url" content="https://uniqueuptopermutation.github.io/untitled-a-tutorial-on-stuff/" />
+    <meta property="og:image" content="https://uniqueuptopermutation.github.io/content/images/2021/04/25564_Crop-7.jpg" />
+    <meta property="article:published_time" content="2021-04-21T23:32:04.000Z" />
+    <meta property="article:modified_time" content="2021-04-22T22:50:41.000Z" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tutorial: Differential Equations from Stochastic Processes" />
+    <meta name="twitter:description" content="by Philip Etter A quick tutorial on the deep connection between elliptic/parabolic systems and stochastic processes. The connection gives a lot of useful intuition about how to interpret elliptic/parabolic PDEs as well as Laplacian systems on graphs. Let us begin by looking at a very special case:  Introduction" />
+    <meta name="twitter:url" content="https://uniqueuptopermutation.github.io/untitled-a-tutorial-on-stuff/" />
+    <meta name="twitter:image" content="https://uniqueuptopermutation.github.io/content/images/2021/04/25564_Crop-7.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Philip Etter" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="534" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Philip Etter: Professional Blog",
+        "url": "https://uniqueuptopermutation.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://uniqueuptopermutation.github.io/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Philip Etter",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://uniqueuptopermutation.github.io/content/images/2021/04/9400185.jpeg",
+            "width": 400,
+            "height": 400
+        },
+        "url": "https://uniqueuptopermutation.github.io/author/philip/",
+        "sameAs": [
+            "http://github.com/UniqueUpToPermutation"
+        ]
+    },
+    "headline": "Tutorial: Differential Equations from Stochastic Processes",
+    "url": "https://uniqueuptopermutation.github.io/untitled-a-tutorial-on-stuff/",
+    "datePublished": "2021-04-21T23:32:04.000Z",
+    "dateModified": "2021-04-22T22:50:41.000Z",
+    "description": "by Philip Etter\nA quick tutorial on the deep connection between elliptic/parabolic systems and\nstochastic processes. The connection gives a lot of useful intuition about how\nto interpret elliptic/parabolic PDEs as well as Laplacian systems on graphs. Let\nus begin by looking at a very special case:\n\nIntroduction\nHitting Time Problems on the Path Graph\nLet us consider the simplest case of an elliptic system - namely an elliptic\nsystem on the path graph \\(P_N\\) with \\(N\\) vertices, labelled \\(0,...",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://uniqueuptopermutation.github.io/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.3" />
+    <link rel="alternate" type="application/rss+xml" title="Philip Etter: Professional Blog" href="https://uniqueuptopermutation.github.io/rss/" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #1d5d72;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://uniqueuptopermutation.github.io">
+                Philip Etter: Professional Blog
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Tutorial: Differential Equations from Stochastic Processes</h1>
+                <section class="post-meta">
+                    Philip Etter -
+                    <time class="post-date" datetime="2021-04-21">21 Apr 2021</time>
+                </section>
+            </header>
+            <section class="post-content">
+
+                <h4 id="by-philip-etter">by Philip Etter</h4>
 <p>A quick tutorial on the deep connection between elliptic/parabolic systems and stochastic processes. The connection gives a lot of useful intuition about how to interpret elliptic/parabolic PDEs as well as Laplacian systems on graphs. Let us begin by looking at a very special case:</p>
 <h2 id="introduction">Introduction</h2>
 <h3 id="hitting-time-problems-on-the-path-graph">Hitting Time Problems on the Path Graph</h3>
 <p>Let us consider the simplest case of an elliptic system - namely an elliptic system on the path graph \(P_N\) with \(N\) vertices, labelled \(0,...,N-1\). Let us define a random process \(X_t \in V(P_N)\) for \(t \in \mathbb{Z}_{\geq 0}\) as a random walk on the graph \(P_N\) (i.e., the process \(X_t\) moves left or right with equal probability, unless it is at the boundary, where it bounces back).</p>
 <p>A natural question to ask about the process \(X_t\) is, given that \(X_t\) starts at a certain location (say, \(X_0 = n\)), how long will it take the process \(X_t\) to hit either the left or right boundary of the graph? For some visual flair, maybe imagine that \(X_t\) is a drunk guy who is trying to get home and is stumbling back on forth on a circular driveway (the endpoints of \(P_N\) are his home) -- and we want to ask how long on average it will take the drunk man to get home?</p>
-<p>This question turns out to essentially be a linear system. To see why, let&apos;s define the stopping time \(T\) to be the first time that \(X_t\) arrives either at \(0\) or \(N - 1\). The above problem is asking us to compute the expected value of \(T\), i.e., compute the function</p>
+<p>This question turns out to essentially be a linear system. To see why, let's define the stopping time \(T\) to be the first time that \(X_t\) arrives either at \(0\) or \(N - 1\). The above problem is asking us to compute the expected value of \(T\), i.e., compute the function</p>
 <p>$$u(x) = \mathbb{E}[ T  | X_0 = x].$$</p>
 <p>A linear system for \(u(x)\) can be expressed using a technique known as <strong>first transition analysis</strong>. First transition analysis expands the above expression by considering all of the possible transitions that the process \(X_t\) can make starting at \(X_0 = x\). We know that \(X_t\) can go left or right with probability \(1/2\), therefore by the properties of conditional expectation, we have that</p>
 <p>$$u(x) = \frac{1}{2} \mathbb{E}[ T | X_1 = x - 1] + \frac{1}{2} \mathbb{E}[ T | X_1 = x + 1].$$</p>
-<p>However, note that the process \(X_t\) is <strong>Markovian</strong>, that is, it has no memory of the past. What the process \(X_t\) does at time \(t + 1\) doesn&apos;t dependent on anything except for the state of \(X_t\) at time \(t\). Therefore, it follows that</p>
+<p>However, note that the process \(X_t\) is <strong>Markovian</strong>, that is, it has no memory of the past. What the process \(X_t\) does at time \(t + 1\) doesn't dependent on anything except for the state of \(X_t\) at time \(t\). Therefore, it follows that</p>
 <p>$$\mathbb{E}[ T | X_1 = y] = \mathbb{E}[ T | X_0 = y] + 1.$$</p>
 <p>In English, this mathematical statement is expressing the fact that expected time until \(X_t\) hits the boundary if it is at state \(y\) at time \(1\) is the same as the expected time for \(X_t\) hits the boundary starting had it started from \(y\) originally, plus one (because we have effectively rewound the clock by one unit of time and need to account for this). Thus, we can plug this into the first transition analysis expression for \(u(x)\) to get</p>
 <p>$$u(x) = \frac{1}{2} \mathbb{E}[ T | X_0 = x - 1] + \frac{1}{2} \mathbb{E}[ T | X_0 = x + 1] + 1 = \frac{1}{2} u(x - 1) + \frac{1}{2} u(x + 1) + 1.$$</p>
@@ -24,7 +682,7 @@
 <p>You might recognize the matrix above as the second order finite difference stencil matrix for the Poisson equation in 1D. As we will see later, this is not entirely a coincidence, as the Poisson equation has a similar probabilistic interpretation.</p>
 <h2 id="elliptic-problems-on-graphs">Elliptic Problems on Graphs</h2>
 <h3 id="hitting-time-problems-on-general-graphs">Hitting Time Problems on General Graphs</h3>
-<p>Now that we&apos;ve seen a basic elliptic system arrise out a hitting time problem for a stochastic process on the path graph \(P_N\), it is time to move to the more general types of graphs. Suppose we have a graph \(G = (V, E)\) and we have a stochastic process \(X_t \in V\) defined on the vertex set \(V\). If we have a special set of death vertices \(D \subset V\), we can once again ask the analogue of the above hitting time question: how long does \(X_t\) take to hit a vertex in \(D\), given that it starts at \(x \in V\)? Once, again, we want to compute</p>
+<p>Now that we've seen a basic elliptic system arrise out a hitting time problem for a stochastic process on the path graph \(P_N\), it is time to move to the more general types of graphs. Suppose we have a graph \(G = (V, E)\) and we have a stochastic process \(X_t \in V\) defined on the vertex set \(V\). If we have a special set of death vertices \(D \subset V\), we can once again ask the analogue of the above hitting time question: how long does \(X_t\) take to hit a vertex in \(D\), given that it starts at \(x \in V\)? Once, again, we want to compute</p>
 <p>$$u(x) = \mathbb{E}[T \mid X_0 = x],$$</p>
 <p>where \(T\) is the hitting time of \(D\), i.e.,</p>
 <p>$$T = \inf_{t} { X_t \in D }.$$</p>
@@ -49,11 +707,11 @@
 <h3 id="expected-terminal-reward-problems-on-graphs">Expected Terminal Reward Problems on Graphs</h3>
 <p>Suppose instead of being interested in the hitting time of a set \(D \subset V\), we are instead interested in some kind of terminal reward on \(D\). Denote this reward as a function \(g : D \longrightarrow \mathbb{R}\). Maybe think of this like \(X_t\) is a person wandering through a maze until he gets to the an exit \(v \in D\), whereupon he recieves the reward \(g(v)\). A question we can ask about \(X_t\) is the <strong>expected terminal reward</strong> that the process \(X_t\) recieves given \(X_t\) starts at a vertex \(x\), i.e.</p>
 <p>$$u(x) = \mathbb{E}[g(X_T) \mid X_0 = x].$$</p>
-<p>Turns out we can use first transition analysis here too! Let&apos;s try it,</p>
+<p>Turns out we can use first transition analysis here too! Let's try it,</p>
 <p>$$u(x) = \sum_v \mathbb{P}(X_1 = v \mid X_0 = x)\mathbb{E}[g(X_T) \mid X_1 = v]$$</p>
 <p>Now, note that by the Markov property,</p>
 <p>$$\mathbb{E}[g(X_T) \mid X_1 = v] = \mathbb{E}[g(X_T) \mid X_0 = v],$$</p>
-<p>because the expected terminal reward is the same if \(X_t\) starts at \(v\) or if we know that \(X_t\) transitioned to \(v\) on the first time step. Note we don&apos;t have to add one in this case like we did for the hitting time problem --- this is because the value of \(T\) does not impact the terminal reward. Therefore,</p>
+<p>because the expected terminal reward is the same if \(X_t\) starts at \(v\) or if we know that \(X_t\) transitioned to \(v\) on the first time step. Note we don't have to add one in this case like we did for the hitting time problem --- this is because the value of \(T\) does not impact the terminal reward. Therefore,</p>
 <p>$$u(x) = \sum_v P(x, v) \, u(v),$$</p>
 <p>which can be written as</p>
 <p>$$\mathcal{L} \, u = 0, \qquad \text{on } V \setminus D$$</p>
@@ -63,8 +721,8 @@
 <h3 id="first-arrival-problems">First Arrival Problems</h3>
 <p>An interesting subset of the above collection of problems are <strong>first arrival problems</strong>. Suppose the termination set \(D \subset V\) is split into two disjoint subsets \(A \cup B = D\). What is the probability that, when we terminate, it is because we are in \(A\)? Another way of phrasing this problem, is <em>what is the probability that \(X_t\) hits \(A\) before it hits \(B\)?</em>. It turns out that solving this problem is very easy with the above machinery. Simply define \(g\) to be \(1\) on \(A\) and \(0\) on \(B\). Then, the expected reward is precisely the probability that we hit \(A\) before \(B\).</p>
 <p>The system of equations written out in full is</p>
-<p>$$ \mathcal{L} \, u = 0, \qquad \text{on } V \setminus D, $$<br>
-$$ u = 1, \qquad \text{on } A,$$<br>
+<p>$$ \mathcal{L} \, u = 0, \qquad \text{on } V \setminus D, $$<br />
+$$ u = 1, \qquad \text{on } A,$$<br />
 $$u = 0, \qquad \text{on } B $$</p>
 <h3 id="general-discounted-reward-problems">General Discounted Reward Problems</h3>
 <p>The most general form of an elliptic system arrising from a stochastic process on a graph can be phrased in terms of discounted reward. Suppose, like above that \(X_t\) wanders through the graph playing the above game until it arrives at a vertex in \(D\) (this time though, we allow \(D = \emptyset\), i.e., the game continues forever). When \(X_t\) arrives at a terminal vertex in \(x \in D\), the game stops and \(X_t\) receives a reward \(g(x)\). However, along the way, the process \(X_t\) also receives an ongoing stream of rewards depending on the vertices it visits. That is, if \(X_t = x\), then the process receives \(f(x)\) reward at time \(t\) where \(f\) is defined on the non-terminal vertices, i.e. \(f : V \setminus D \longrightarrow \mathbb{R}\). This problem revolves around the expected total reward received over the course of the game,</p>
@@ -90,21 +748,21 @@ $$u = 0, \qquad \text{on } B $$</p>
 <p>$$u(x) = \mathbb{E}\left[\sum_{t = 0}^{\infty} \gamma^t f(X_t) \mid X_0 = x\right].$$</p>
 <p>An immediate consequence of these probabilistic expressions is the maximal principle,</p>
 <h3 id="discrete-maximum-principle-for-subharmonic-functions">Discrete Maximum Principle for Subharmonic Functions</h3>
-<p>Functions \(v\) defined on the vertices of a graph \(G\) with a stochastic process \(X_t\) with generator \(\mathcal{L}\) are called <strong>subharmonic</strong> on \(A \subset V\) if<br>
-$$\mathcal{L} \, v \geq 0, \qquad \text{on } A.$$<br>
-(It is <strong>harmonic</strong> if \(\mathcal{L} \, v = 0\)). Note that any \(v\) is trivially the solution to the system<br>
-$$(I - P) \, v = -\mathcal{L} \, v, \qquad \text{on } A,$$<br>
-$$v = v, \qquad \text{on } \partial A,$$<br>
-where we define \(\partial A\) as the set of vertices that not in \(A\), but are adjacent to a vertex in \(A\). Therefore, the probabilistic interpretation we&apos;ve developed tells us that, for \(x \in A\),</p>
+<p>Functions \(v\) defined on the vertices of a graph \(G\) with a stochastic process \(X_t\) with generator \(\mathcal{L}\) are called <strong>subharmonic</strong> on \(A \subset V\) if<br />
+$$\mathcal{L} \, v \geq 0, \qquad \text{on } A.$$<br />
+(It is <strong>harmonic</strong> if \(\mathcal{L} \, v = 0\)). Note that any \(v\) is trivially the solution to the system<br />
+$$(I - P) \, v = -\mathcal{L} \, v, \qquad \text{on } A,$$<br />
+$$v = v, \qquad \text{on } \partial A,$$<br />
+where we define \(\partial A\) as the set of vertices that not in \(A\), but are adjacent to a vertex in \(A\). Therefore, the probabilistic interpretation we've developed tells us that, for \(x \in A\),</p>
 <p>$$v(x) = \mathbb{E}\left[\sum_{t = 0}^{T - 1}- \mathcal{L} v(X_t) + v(X_T) \mid X_0 = x\right] \leq \mathbb{E}[v(X_T)] \leq \max_{y \in \partial A} v(y),$$</p>
 <p>where \(T\) is the hitting time of \(\partial A\). Note that we have used the fact that \(\mathcal{L} v \leq 0\) to drop the \(\sum_{t = 0}^{T - 1}(\mathcal{L} v)(X_t)\) term and then used the fact that \(X_T \in \partial A\).</p>
 <p>Therefore, <em>if \(v\) is a subharmonic function on a domain \(A\) in the graph \(G\), its maximum must always occur on the boundary of \(A\)</em>. This is fundamental result in analysis (for subharmonic functions on \(\mathbb{R}^n\)), but this probabilistic interpretation of the Laplacian gives us a super easy way of seeing why the result is true.</p>
-<p>A byproduct of this analysis is that if the function \(v(x)\) is actually harmonic, instead of just subharmonic, we have that, for \(x \in A\),<br>
-$$v(x) = \mathbb{E}\left[v(X_T) \mid X_0 = x\right] = \sum_{y \in \partial A} \mathbb{P}(X_T = y) \, v(y). $$<br>
+<p>A byproduct of this analysis is that if the function \(v(x)\) is actually harmonic, instead of just subharmonic, we have that, for \(x \in A\),<br />
+$$v(x) = \mathbb{E}\left[v(X_T) \mid X_0 = x\right] = \sum_{y \in \partial A} \mathbb{P}(X_T = y) \, v(y). $$<br />
 Thus, \(v(x)\) is essentially just a weighted average over the boundary \(\partial A\), where the contribution of \(v(y)\) depends on the probability of the walk \(X_t\) ending up at \(y\) when it terminates.</p>
-<p>This idea of expressing a function in terms of an expectation of a function of stochastic process \(X_t\) gives us a glimpse of a fundamental technique in stochastic differential equations called Ito&apos;s formula (to be talked about later).</p>
+<p>This idea of expressing a function in terms of an expectation of a function of stochastic process \(X_t\) gives us a glimpse of a fundamental technique in stochastic differential equations called Ito's formula (to be talked about later).</p>
 <h3 id="stationary-distribution-problems">Stationary Distribution Problems</h3>
-<p>Another important property is the stationary distribution of stochastic processes \(X_t\) on graphs. Stationary distributions are extremely important in many data science applications. For example, one way to rank the relative importance of web domains on the internet is to think about a random walk \(X_t\) through the internet and ask the question: <em>after a</em> <strong>very</strong> <em>long time what is the average amount of time that \(X_t\) has spent at a specific webpage</em>? It turns out this question has a unique answer (for most graphs) that doesn&apos;t depend on the starting point of \(X_t\). Indeed, the average fraction of the time \(X_t\) spends at \(x\) (over an infinitely long time) is given by the entries of a special distribution \(\pi\) called the stationary distribution. I won&apos;t go into much detail here, but basically if \(\pi_t\) denotes the probability distribution of \(X_t\) at time \(t\) on the graph, then \(\pi\) is the limit of the \(\pi_t\) as \(t \rightarrow \infty\).</p>
+<p>Another important property is the stationary distribution of stochastic processes \(X_t\) on graphs. Stationary distributions are extremely important in many data science applications. For example, one way to rank the relative importance of web domains on the internet is to think about a random walk \(X_t\) through the internet and ask the question: <em>after a</em> <strong>very</strong> <em>long time what is the average amount of time that \(X_t\) has spent at a specific webpage</em>? It turns out this question has a unique answer (for most graphs) that doesn't depend on the starting point of \(X_t\). Indeed, the average fraction of the time \(X_t\) spends at \(x\) (over an infinitely long time) is given by the entries of a special distribution \(\pi\) called the stationary distribution. I won't go into much detail here, but basically if \(\pi_t\) denotes the probability distribution of \(X_t\) at time \(t\) on the graph, then \(\pi\) is the limit of the \(\pi_t\) as \(t \rightarrow \infty\).</p>
 <p>The key property which defines the stationary distribution is that if \(X_0\) has distribution \(\pi\), i.e., \(X_0 \sim \pi\), then \(X_1, X_2, X_3 ...\), etc. also have distribution \(\pi\). Hence, why \(\pi\) is called stationary. To write down an equation for the stationary distribution, we should first write down how the distributions \(\pi_t\) evolve with time. This turns out not to be to difficult, as to compute \(\pi_t(x)\) we simply need to some over all of the possible ways \(X_{t - 1}\) can reach \(x\) and weigh those quantities by the probability of making the transition \(X_{t - 1} \rightarrow x\),</p>
 <p>$$\pi_t(x) = \sum_{v} \mathbb{P}(X_t = x \mid X_{t - 1} = v) \, \mathbb{P}(X_{t - 1} = v) = \sum_v P(v, x) \, \pi_{t - 1}(v).$$</p>
 <p>In matrix form, this is given by</p>
@@ -127,7 +785,7 @@ Thus, \(v(x)\) is essentially just a weighted average over the boundary \(\parti
 <p>$$\Delta_t \pi_t = \mathcal{L}^T \, \pi_t,$$</p>
 <p>where \(\mathcal{L}\) is the generator of \(X_t\) (i.e., the graph Laplacian) and \(\Delta_t\) is the discrete time derivative. This is the <strong>discrete-time forward Kolmogorov equation</strong> or the <strong>discrete-time heat equation</strong>. Note the similarity of this equation to the continuous heat equation,</p>
 <p>$$\frac{\partial \pi_t}{\partial t} = \frac{1}{2} \Delta \, \pi_t.$$</p>
-<p>However, there are some notable differences between the discrete and continuous heat equations. These are mostly just a matter of convention. There is a transpose because of the way we defined \(P\). The factor of \(\frac{1}{2}\) is also to some extent as result of convention, but it is harder to explain away for now. Morally, you should think of \(\mathcal{L}\) as the discrete analogue of \(\frac{1}{2} \Delta\) (note the factor of \(\frac{1}{2}\) that appeared in the introduction section). Indeed, on grid graphs, an appropriately normalized \(\mathcal{L}^T = \mathcal{L}\) (\(\mathcal{L}\) is symmetric on grid graphs) will &quot;converge&quot; to \(\frac{1}{2} \Delta\) as the grid becomes infinitely fine. This bridge allows us to translate intuition between the worlds discrete spectral graph theory and continuous PDEs.</p>
+<p>However, there are some notable differences between the discrete and continuous heat equations. These are mostly just a matter of convention. There is a transpose because of the way we defined \(P\). The factor of \(\frac{1}{2}\) is also to some extent as result of convention, but it is harder to explain away for now. Morally, you should think of \(\mathcal{L}\) as the discrete analogue of \(\frac{1}{2} \Delta\) (note the factor of \(\frac{1}{2}\) that appeared in the introduction section). Indeed, on grid graphs, an appropriately normalized \(\mathcal{L}^T = \mathcal{L}\) (\(\mathcal{L}\) is symmetric on grid graphs) will "converge" to \(\frac{1}{2} \Delta\) as the grid becomes infinitely fine. This bridge allows us to translate intuition between the worlds discrete spectral graph theory and continuous PDEs.</p>
 <h3 id="the-backward-kolmogorov-equation-backward-heat-equation">The Backward Kolmogorov Equation / Backward Heat Equation</h3>
 <p>The Kolmogorov Backward Equation arises from a similar setup to the discounted reward problem. Let us modify the discounted reward problem a bit to turn it into a time evolution problem. Suppose we have a similar setup as before: i.e., we have a process \(X_t\) on the graph \(G = (V, E)\). However, this time, the reward function \(f(x)\) is allowed to be <em>time dependent</em>, so it is a function both of a vertex \(x\) and a time \(t\). Suppose, that we let the process \(X_t \in V\) run on the graph until time \(\tau \in \mathbb{N}\), and at every time step, it collects \(f(X_t)\) reward until time \(\tau\), when it collects \(g(X_\tau)\) terminal reward and the game ends. Note that unlike \(T\) from the previous section, which is a stopping time, and may be random, \(\tau\) is simply a constant that we choose before hand. Now, we ask the question: given we start the game with \(X_0 = x\), what is the expect amount of (discounted) reward that \(X_t\) accumulates in time up to \(\tau\)? That is, we want to compute the <strong>value function</strong> of the state \(x\),</p>
 <p>$$V(x) = \mathbb{E}\left[\sum_{t = 0}^{\tau - 1} \gamma^t f(x, t) + g(X_\tau) \mid X_0 = x\right].$$</p>
@@ -138,7 +796,7 @@ Thus, \(v(x)\) is essentially just a weighted average over the boundary \(\parti
 <p>$$= f(X_s, s) + \gamma \sum_v P(x, v) \, V(v, s + 1) . $$</p>
 <p>Note that the above is a linear system for the \(\{ V(x, s) \}_{x \in V}\) in terms of the \(\{ V(x, s+1) \}_{x \in V}\). Therefore, since we have the boundary condition</p>
 <p>$$V(x, t) = g(x),$$</p>
-<p>we can recursively solve for the \(V(x, s)\) backwards in time until we get the \(V(x, 0)\) we originally desired. Because we are solve backwards in time, this is referred to as the <strong>backward Kolmogorov equation</strong> or <strong>backward heat equation</strong>. Let&apos;s rewrite the system of equations to put it into a more (subjectively) digestable form,</p>
+<p>we can recursively solve for the \(V(x, s)\) backwards in time until we get the \(V(x, 0)\) we originally desired. Because we are solve backwards in time, this is referred to as the <strong>backward Kolmogorov equation</strong> or <strong>backward heat equation</strong>. Let's rewrite the system of equations to put it into a more (subjectively) digestable form,</p>
 <p>$$V(x, s + 1) - V(x, s) = \left(V(x, s + 1) - \gamma \sum_v P(x, v) \, V(v, s + 1)\right) - f(X_s, s).$$</p>
 <p>Note we have simply multiplied both sides by \(-1\) and added \(V(x, s + 1)\) to both sides. Note that the left hand side of the equation is essentially a time derivative (as it is the change in \(V(x)\) from time \(s\) to time \(s + 1\)). Thus, we can write the whole equation above in matrix form as</p>
 <p>$$\Delta_t V_t = (I - \gamma P) V_{t + 1} - f_t.$$</p>
@@ -146,20 +804,20 @@ Thus, \(v(x)\) is essentially just a weighted average over the boundary \(\parti
 <p>$$\Delta_t V_t = -\mathcal{L} \, V_{t + 1} - f_t, \qquad \text{for } 0 \leq t &lt; \tau$$</p>
 <p>$$V_\tau = g$$</p>
 <p>Note the similarity of the above expression to the heat equation from PDEs, this is not accidental, and we will examine this connection later on when we talk about the continuous analogues of these equations.</p>
-<p>Another noteworthy remark is that one can rewrite this equation on terms of a new time variable \(q\) which represents &quot;time left until the end of the game&quot;, i.e., \(q = \tau - t\). Under this variable, the backward Kolmogorov equation becomes</p>
+<p>Another noteworthy remark is that one can rewrite this equation on terms of a new time variable \(q\) which represents "time left until the end of the game", i.e., \(q = \tau - t\). Under this variable, the backward Kolmogorov equation becomes</p>
 <p>$$\Delta_q V_q = \mathcal{L} \, V_{q} + f_q, \qquad \text{for } q &gt; 0,$$</p>
 <p>$$V_0 = g$$</p>
 <p>Compare this to the continuous backward heat equation with an inhomogenous term,</p>
 <p>$$-\frac{\partial V}{\partial t} = \frac{\partial V}{\partial q} = \frac{1}{2} \Delta \, V + f.$$</p>
 <p>We will examine how all of these results from the discrete case carry over into the continuous case in subsequent sections.</p>
 <p>You should also compare it to the forward Kolmogorov equation and note that the transpose that shows up in forward equation, but not in the backward equation. A good way to make sense of this is to think of \(\mathcal{L}\) in the following way: essentially, \(\mathcal{L}^T\) generates the evolution of distributions forwards in time, while \(\mathcal{L}\) generates the evolution of value functions / test functions backwards in time. When the underlying process \(X_t\) is reversible (i.e., \(Y_t = X_{-t}\) is the same as \(X_t\), so the process looks the same when time is reversed), we have that \(\mathcal{L}^T = \mathcal{L}\) and the backwards and forwards equations are the same. This is a manifestation of the fact that the evolution of the process forward in time and backward in time are indistinguishable. This happens to be the case on grid graphs.</p>
-<h2 id="moving-to-continuous-stochastic-processes-itos-formula">Moving to Continuous Stochastic Processes: Ito&apos;s Formula</h2>
+<h2 id="moving-to-continuous-stochastic-processes-itos-formula">Moving to Continuous Stochastic Processes: Ito's Formula</h2>
 <p>Here is where we finally make the jump to continuous time and space. To begin this conversion process, we need to make note that the fundamental analogue of the stochastic graph process \(X_t\) is going to be a continuous space/time Ito process \(X_t\) defined by the stochastic differential equation</p>
 <p>$$dX_t = \mu(X_t) \, dt + \sigma(X_t) \, dB_t,$$</p>
-<p>where \(B_t\) is a standard Brownian motion (i.e., continuous time random walk). The term \(\mu(x)\) is referred to as the <strong>drift</strong> of the process \(X_t\) when it is at \(x\) and \(\sigma(x)\) is the <strong>volitility</strong> of the process \(X_t\) when it is at \(x\). If you&apos;ve never seen stochastic differential equations before, the above equation shouldn&apos;t scare you -- you should try to read it defining as the continuous time limit of the following discrete-time process:</p>
+<p>where \(B_t\) is a standard Brownian motion (i.e., continuous time random walk). The term \(\mu(x)\) is referred to as the <strong>drift</strong> of the process \(X_t\) when it is at \(x\) and \(\sigma(x)\) is the <strong>volitility</strong> of the process \(X_t\) when it is at \(x\). If you've never seen stochastic differential equations before, the above equation shouldn't scare you -- you should try to read it defining as the continuous time limit of the following discrete-time process:</p>
 <p>$$X_{t + \Delta t} - X_t = \mu(X_t) \, \Delta t + \sigma(X_t) \, \Delta B_t,$$</p>
 <p>where \(\Delta B_t \sim \mathcal{N}(0, \Delta t)\) are independent normal variables with mean \(0\) and variance \(\Delta t\), and the time step \(\Delta t\) is taken to be infinitesimally small.</p>
-<p>Here is where we are going to need a bit of Ito calculus. Don&apos;t worry! It&apos;s just like normal calculus, except instead of just having a single class of standard infinitesimal quantity \(dt\), we also have a second class of &quot;special&quot; infinitesimal normal random variables \(dB_t\). Just like in normal elementary calculus, the way we perform any calculation is to expand in powers of \(dt\) and \(dB_t\) and then discard anything that is smaller than \(dt\) (since \(dt\) is already infinitesimally small). The caveat is that</p>
+<p>Here is where we are going to need a bit of Ito calculus. Don't worry! It's just like normal calculus, except instead of just having a single class of standard infinitesimal quantity \(dt\), we also have a second class of "special" infinitesimal normal random variables \(dB_t\). Just like in normal elementary calculus, the way we perform any calculation is to expand in powers of \(dt\) and \(dB_t\) and then discard anything that is smaller than \(dt\) (since \(dt\) is already infinitesimally small). The caveat is that</p>
 <p>$$dB_t \approx \sqrt{dt},$$</p>
 <p>since \(dB_t\) is an infinitesimal normal random variable with variance \(dt\) and hence standard deviation \(\sqrt{dt}\). The way that Ito calculus expresses this equivalence is with the identity</p>
 <p>$$(dB_t)^2 = dt.$$</p>
@@ -172,11 +830,11 @@ Thus, \(v(x)\) is essentially just a weighted average over the boundary \(\parti
 <p>$$(dX_t)^2 = \mu(X_t) \, dt^2 + \frac{1}{2} \sigma^2(X_t) \mu(X_t) \, dB_t \, dt + \sigma(X_t)^2 \, (dB_t)^2 = \sigma(X_t)^2 , dt,$$</p>
 <p>where we have used the identity \((dB_t)^2 = dt\), and discarded any terms that are higher order in \(dt\). Therefore,</p>
 <p>$$du(X_t) =  \mu(X_t) \frac{\partial u}{\partial x} \, dt + \sigma(X_t) \frac{\partial u}{\partial x}  \, dB_t + \frac{1}{2} \sigma(X_t)^2 \frac{\partial^2 u}{\partial x^2} \, dt, $$</p>
-<p>This formula is the analogue of the chain rule for elementary calculus, and goes by the name of Ito&apos;s formula. Note that the presence of randomness adds the \(\sigma(X_t) \frac{\partial u}{\partial x}  \, dB_t\) and \(\frac{1}{2} \sigma(X_t)^2 \frac{\partial^2 u}{\partial x^2} \, dt\) terms to the otherwise standard expressions. The Ito formula is often written as follows</p>
+<p>This formula is the analogue of the chain rule for elementary calculus, and goes by the name of Ito's formula. Note that the presence of randomness adds the \(\sigma(X_t) \frac{\partial u}{\partial x}  \, dB_t\) and \(\frac{1}{2} \sigma(X_t)^2 \frac{\partial^2 u}{\partial x^2} \, dt\) terms to the otherwise standard expressions. The Ito formula is often written as follows</p>
 <p>$$du(X_t) = \mathcal{L} u(X_t) \, dt + \sigma(X_t) \frac{\partial u}{\partial x} \, dB_t,$$</p>
 <p>where \(\mathcal{L}\) is known as the <strong>infinitesimal generator</strong> of the process \(X_t\), and is given by</p>
 <p>$$\mathcal{L} = \mu(x) \frac{\partial}{\partial x} + \frac{1}{2} \sigma^2(x) \frac{\partial^2}{\partial x^2}.$$</p>
-<p>Then, from Ito&apos;s formula above, we have that</p>
+<p>Then, from Ito's formula above, we have that</p>
 <p>$$du(X_t) = \mathcal{L} u(X_t) \, dt + \sigma(X_t) \frac{\partial u}{\partial x} \, dB_t.$$</p>
 <p>In particular, the wonderful thing about this choice of \(u\) is that, in expectation the \(dB_t\) term vanishes, since \(dB_t\) is mean zero and independent of everything that happens up until time \(t\). Thus,</p>
 <p>$$ \mathbb{E}[du(X_t) \mid X_0 = x] = \mathbb{E}[\mathcal{L} u (X_t) \, dt \mid X_0 = x] + \mathbb{E}\left[\sigma(X_t) \frac{\partial u}{\partial x} \, dB_t \mid X_0 = x\right]$$</p>
@@ -185,7 +843,7 @@ Thus, \(v(x)\) is essentially just a weighted average over the boundary \(\parti
 <p>$$\mathbb{E}[u(X_\tau) \mid X_0 = x] - u(x) = \mathbb{E} \left[ \int_0^\tau \mathcal{L} u (X_t) \, dt \mid X_0 = x\right].$$</p>
 <p>Or alternatively,</p>
 <p>$$u(x) = \mathbb{E} \left[ \int_0^\tau -\mathcal{L} u (X_t) \, dt + u(X_\tau)  \mid X_0 = x\right].$$</p>
-<p>It is actually possible to take \(\tau\) to be a random variable (we won&apos;t show it here because that requires some analysis stuff that&apos;s beyond the scope of this tutorial), so we can replace the \(\tau\) with a stopping time \(T\). \(T\) can be (and is very often taken to be) the hitting time of some set in \(\mathbb{R}\). Often times, we let \(\Omega \subset \mathbb{R}\) be an interval and then define the stopping time \(T\) as the first time at which \(X_t\) hits the boundary of the domain \(\Omega\), i.e.,</p>
+<p>It is actually possible to take \(\tau\) to be a random variable (we won't show it here because that requires some analysis stuff that's beyond the scope of this tutorial), so we can replace the \(\tau\) with a stopping time \(T\). \(T\) can be (and is very often taken to be) the hitting time of some set in \(\mathbb{R}\). Often times, we let \(\Omega \subset \mathbb{R}\) be an interval and then define the stopping time \(T\) as the first time at which \(X_t\) hits the boundary of the domain \(\Omega\), i.e.,</p>
 <p>$$T = \inf_{t} { X_t \in \partial \Omega }.$$</p>
 <p>Then we have that</p>
 <p>$$u(x) = \mathbb{E} \left[ \int_0^T -\mathcal{L} u (X_t) \, dt + u(X_T)  \mid X_0 = x\right].$$</p>
@@ -196,13 +854,13 @@ Thus, \(v(x)\) is essentially just a weighted average over the boundary \(\parti
 <p>In this SDE, \(\mu(x)\) is a vector field on \(\mathbb{R}^n\) determining the drift of the process \(X_t\) when it is at \(x\) and \(\sigma(x)\) determines the volatility (i.e., noise) of the process \(X_t\) when it is at \(x\). \(dB_t^n\) denotes the standard multidimensional infinitesimal Brownian motion, i.e., \(dB_t^n \sim \mathcal{N}(0, I_n \, dt)\). In this case we get the same expression for \(u(x)\), but the infinitesimal generator becomes</p>
 <p>$$\mathcal{L} = \mu(x) \cdot \nabla + \frac{1}{2} \sigma(x)^2 \, \Delta.$$</p>
 <h2 id="elliptic-partial-differential-equations">Elliptic Partial Differential Equations</h2>
-<p>We can take the above analysis and use it to get intuition on many of the partial differential equations we are used to seeing in our everyday lives by connecting them to properties of stochastic processes (have you ever read a more ivory tower sentence?). First, let&apos;s think of the analogue to our discrete time-game where \(X_t\) wanders around a graph and collects \(f(x)\) reward after leaving vertex \(x\) and \(g(x)\) terminal reward when it reaches a terminal vertex \(x \in D\). In the continuous space/time case, we instead consider \(X_t\) as a stochastic process on a connected bounded domain \(\Omega \subset \mathbb{R}^n\). The internal reward function \(f(x)\) is now defined on \(\Omega\) and is interpreted as a <em>rate</em>, i.e., if \(X_t\) is at \(x\) for a period of time \(dt\), then it picks up \(f(x) \, dt\) reward. The terminal reward function \(g(x)\) is now defined on the boundary \(\partial \Omega\). Our expression from the previous section tells us that, if \(u(x)\) solves the elliptic PDE with Dirichlet boundary conditions,</p>
+<p>We can take the above analysis and use it to get intuition on many of the partial differential equations we are used to seeing in our everyday lives by connecting them to properties of stochastic processes (have you ever read a more ivory tower sentence?). First, let's think of the analogue to our discrete time-game where \(X_t\) wanders around a graph and collects \(f(x)\) reward after leaving vertex \(x\) and \(g(x)\) terminal reward when it reaches a terminal vertex \(x \in D\). In the continuous space/time case, we instead consider \(X_t\) as a stochastic process on a connected bounded domain \(\Omega \subset \mathbb{R}^n\). The internal reward function \(f(x)\) is now defined on \(\Omega\) and is interpreted as a <em>rate</em>, i.e., if \(X_t\) is at \(x\) for a period of time \(dt\), then it picks up \(f(x) \, dt\) reward. The terminal reward function \(g(x)\) is now defined on the boundary \(\partial \Omega\). Our expression from the previous section tells us that, if \(u(x)\) solves the elliptic PDE with Dirichlet boundary conditions,</p>
 <p>$$\left[\mu(x) \cdot \nabla + \frac{1}{2} \sigma(x)^2 \, \Delta\right] u(x) = -f(x) \qquad \text{on } \Omega, $$</p>
 <p>$$u(x) = g(x) \qquad \text{on } \partial \Omega, $$</p>
 <p>then it satisfies</p>
 <p>$$ u(x) = \mathbb{E} \left[ \int_0^T -\mathcal{L} u (X_t) \, dt + u(X_T)  \mid X_0 = x\right] = \mathbb{E} \left[ \int_0^T f(X_t) \, dt + g(X_T)  \mid X_0 = x\right], $$</p>
 <p>where</p>
-<p>$$dX_t = \mu(X_t) \cdot dt + \sigma(X_t) \, dB_t^n.$$<br>
+<p>$$dX_t = \mu(X_t) \cdot dt + \sigma(X_t) \, dB_t^n.$$<br />
 This is the probabilistic interpretation of elliptic PDEs.</p>
 <p>Note in particular, this gives a nice probabilistic form for the solution of the Laplace equation with Dirichlet boundary conditions, i.e.,</p>
 <p>$$  \Delta \, u(x) = 0 \qquad \text{on } \Omega, $$</p>
@@ -221,8 +879,8 @@ This is the probabilistic interpretation of elliptic PDEs.</p>
 <p>$$dX_t = \mu(x) \cdot dt + \sigma(x) \, dB_t^n,$$</p>
 <p>and we want to ask the continuous analogue of the discrete hitting time problem. That is, <em>how long does it take \(X_t\) to hit the boundary \(\partial \Omega\) if it starts from \(X_0 = x\)?</em> We will write this function as</p>
 <p>$$u(x) = \mathbb{E}\left[T \mid X_0 = x\right] = \mathbb{E}\left[\int_0^T \, dt \mid X_0 = x\right].$$</p>
-<p>The probabalistic interpretation we derived in the previous sections tells us that \(u(x)\) satisfies the PDE<br>
-$$\mu(x) \cdot \nabla u(x) + \frac{1}{2} \sigma(x)^2 \, \Delta \, u(x) = -1 \qquad \text{on } \Omega,$$<br>
+<p>The probabalistic interpretation we derived in the previous sections tells us that \(u(x)\) satisfies the PDE<br />
+$$\mu(x) \cdot \nabla u(x) + \frac{1}{2} \sigma(x)^2 \, \Delta \, u(x) = -1 \qquad \text{on } \Omega,$$<br />
 $$u(x) = 0 \qquad \text{on } \partial \Omega.$$</p>
 <h3 id="first-arrival-problems">First Arrival Problems</h3>
 <p>Suppose that we have a stochastic process \(X_t\) on \(\Omega \subset \mathbb{R}^n\) given by</p>
@@ -234,7 +892,7 @@ $$u(x) = 0 \qquad \text{on } \partial \Omega.$$</p>
 <p>$$u(x) = 1 \qquad \text{on } \partial \Omega^+, $$</p>
 <p>$$u(x) = 0 \qquad \text{on } \partial \Omega^-. $$</p>
 <h2 id="parabolic-differential-equations">Parabolic Differential Equations</h2>
-<p>To move to parabolic differential equations, i.e., time evolution problems, we need a version of Ito&apos;s formula for functions for functions \(u(x, t)\) that depend both on space and time. Turns out, adding a time variable doesn&apos;t change anything except for adding an extra term in the time partial derivative in \(u(x, t)\). Let&apos;s redo the Taylor expansion of \(u(X_t, t)\) in terms of \(dX_t\) and \(dt\),</p>
+<p>To move to parabolic differential equations, i.e., time evolution problems, we need a version of Ito's formula for functions for functions \(u(x, t)\) that depend both on space and time. Turns out, adding a time variable doesn't change anything except for adding an extra term in the time partial derivative in \(u(x, t)\). Let's redo the Taylor expansion of \(u(X_t, t)\) in terms of \(dX_t\) and \(dt\),</p>
 <p>$$du(X_t, t) = \frac{\partial u}{\partial t} \, dt + \frac{\partial u}{\partial x} \, dX_t + \frac{\partial^2 u}{\partial x^2} , (dX_t)^2$$</p>
 <p>Redoing the calculation that we did earlier, this gives us</p>
 <p>$$du(X_t, t) = \left(\frac{\partial}{\partial t} + \mathcal{L}\right) u(X_t) \, dt + \sigma(X_t) \frac{\partial u}{\partial x} \, dB_t$$</p>
@@ -301,7 +959,7 @@ $$u(x) = 0 \qquad \text{on } \partial \Omega.$$</p>
 <p>Thus, we have that</p>
 <p>$$\mathbb{E}[g(X_t)] = \langle g, \pi_t \rangle_{L^2} = \langle g, e^{t\mathcal{L}^*} \pi_0 \rangle_{L^2} = \langle e^{t\mathcal{L}} g, \pi_0 \rangle_{L^2} = \mathbb{E}[(e^{t\mathcal{L}}) g(X_0)].$$</p>
 <p>This is saying that we can either compute the expectation by evolving the distribution \(\pi_t\) forward in time and taking the inner product with \(g\), or by evolving the function \(g\) backward in time and taking the inner product with \(\pi_0\). Hence, the names of the Kolmogorov forward and backward equations.</p>
-<p>This might be a bit abstract, but to put yourself on solid ground, it is worth thinking about the discrete analogue on a graph. Recall that if \(g(x)\) is a function on the vertices of graph, and we have a Markov process \(X_t\) with probability transition matrix \(P\) (i.e., applying \(P^T\) to a distribution evolves it forward in time), then the expectation of \(g(X_t)\) is given by<br>
+<p>This might be a bit abstract, but to put yourself on solid ground, it is worth thinking about the discrete analogue on a graph. Recall that if \(g(x)\) is a function on the vertices of graph, and we have a Markov process \(X_t\) with probability transition matrix \(P\) (i.e., applying \(P^T\) to a distribution evolves it forward in time), then the expectation of \(g(X_t)\) is given by<br />
 $$\mathbb{E}[g(X_t)] = g^T \pi_t = g^T (P^T)^t \pi_0 = (P^t g)^T \pi_0 = \mathbb{E}[(P^t g)(X_0)].$$</p>
 <p>We see that by either choosing to group the time evolution operator \(P^T\) with the probability distribution \(\pi_0\) or the test function \(g\) we either evolve the probability distribution forward in time or the test function \(g\) backward in time (via \(P\)).</p>
 <p>In short, the forward Kolmogorov equation evolves distributions forward in time, while the backward Kolmogorov equation evolves test functions backward in time.</p>
@@ -315,11 +973,11 @@ $$\mathbb{E}[g(X_t)] = g^T \pi_t = g^T (P^T)^t \pi_0 = (P^t g)^T \pi_0 = \mathbb
 <p>This tell us one very important fact - the infinitesimal generator of \(X_t\) under time reversal is equal to</p>
 <p>$$\mathcal{L}_{-t} = - \mu(x) \cdot \nabla + \frac{1}{2} \sigma(x)^2 \Delta,$$</p>
 <p>Now finally, this brings us to the <strong>Feynman interpretation</strong> of the backward Kolmogorov / heat equation. Suppose we have the equation</p>
-<p>$$ \frac{\partial u}{\partial t} = \mu(x) \cdot \nabla u(x) + \frac{1}{2} \sigma(x)^2 \, \Delta \, V(x) + f(x, t), \qquad \text{for } t &gt; 0, $$<br>
+<p>$$ \frac{\partial u}{\partial t} = \mu(x) \cdot \nabla u(x) + \frac{1}{2} \sigma(x)^2 \, \Delta \, V(x) + f(x, t), \qquad \text{for } t &gt; 0, $$<br />
 $$V(x, 0) = g(x), $$</p>
-<p>Our derivations in the section about the backward Kolmogorov equation tells us that \(u(x, t)\) can be viewed as the expectation<br>
+<p>Our derivations in the section about the backward Kolmogorov equation tells us that \(u(x, t)\) can be viewed as the expectation<br />
 $$u(x, t) = \mathbb{E}\left[\int_0^t f(X_s, s) \, ds + g(X_0) \mid X_t = x\right],$$</p>
-<p>where \(X_t\) is the stochastic process given by<br>
+<p>where \(X_t\) is the stochastic process given by<br />
 $$dX_t = \mu(X_t) \cdot dt + \sigma(X_t) \, dB_t^n.$$</p>
 <p>We can therefore think of the forward equation as performing a weighted sum over all paths the process \(X_t\) can take to reach location \(x\) and \(t\), where the weight of a specific instance of the path is proportional to \(\int_0^t f(X_t, t) \, dt + g(X_0)\). You may have heard of the famous <strong>Feynman integral</strong> from quantum mechanics, this is a close cousin of that integral (in fact, the Feynman integral is this integral extended to imaginary values of time). The idea is you can evaluate \(u(x, t)\) by summing over all paths that \(X_t\) can take to get to \(x\) at time \(t\).  Alternatively, we can think of the above expression in its time-reversed form, i.e., instead of using \(X_t\), we time reverse \(X_t\) to get the process \(Y_t\), given by</p>
 <p>$$dY_t = -\mu(X_t) \cdot dt - \sigma(X_t) \, dB_t^n,$$</p>
@@ -340,7 +998,7 @@ $$dX_t = \mu(X_t) \cdot dt + \sigma(X_t) \, dB_t^n.$$</p>
 <p>Likewise, if \(u(x, t)\) is defined on a domain \(\Omega \times [0, \tau]\), then we have</p>
 <p>$$u(x, t) \leq \max \left( \sup_{y \in \partial \Omega, s \in [0, \tau]} u(y, s), \qquad \sup_{y \in \Omega} u(y, 0) \right).$$</p>
 <h3 id="stationary-distribution-problems">Stationary Distribution Problems</h3>
-<p>Like in the discrete case, the distribution \(\pi_t\) of a stochastic process \(X_t\) with nonzero diffusion (i.e., \(\sigma &gt; 0\)) always approaches a stationary distribution \(\pi\) as \(t \rightarrow \infty\) (we won&apos;t show this here, but it&apos;s true). To compute what this stationary distribution is, we take a look at the evolution equation for \(\pi_t\), i.e.,</p>
+<p>Like in the discrete case, the distribution \(\pi_t\) of a stochastic process \(X_t\) with nonzero diffusion (i.e., \(\sigma &gt; 0\)) always approaches a stationary distribution \(\pi\) as \(t \rightarrow \infty\) (we won't show this here, but it's true). To compute what this stationary distribution is, we take a look at the evolution equation for \(\pi_t\), i.e.,</p>
 <p>$$\left(\frac{\partial}{\partial t} - \mathcal{L}^*\right) \pi_t = 0 .$$</p>
 <p>For the change in \(\pi\) to be zero, therefore, we must have that the stationary distribution satisfies the elliptic equation</p>
 <p>$$\mathcal{L}^* \pi = 0.$$</p>
@@ -355,7 +1013,7 @@ $$dX_t = \mu(X_t) \cdot dt + \sigma(X_t) \, dB_t^n.$$</p>
 <p>$$dX_t = \nabla \log p(x) \, dt.$$</p>
 <p>If \(X_t\) is allowed to run long enough, eventually \(X_t\) will converge to a local mode of the distribution \(p(x)\). However, often times the mode of a distribution is not a good representation of the distribution as a whole, and we would rather have the ability to sample from it. To see how this can be done, consider the above equation, but with a bit of noise added from Brownian motion,</p>
 <p>$$dX_t = \nabla \log p(x) \, dt + \sqrt{2} \, dB_t.$$</p>
-<p>This process is referred to as <strong>overdamped Langevin dynamics.</strong> Let&apos;s compute the stationary distribution of this process using the machinery from the previous section. The stationary distribution \(\pi\) should satisfy</p>
+<p>This process is referred to as <strong>overdamped Langevin dynamics.</strong> Let's compute the stationary distribution of this process using the machinery from the previous section. The stationary distribution \(\pi\) should satisfy</p>
 <p>$$-\nabla \cdot ( \pi(x) \nabla \log p(x)) + \Delta \pi(x) = 0.$$</p>
 <p>We can rearrange this to get</p>
 <p>$$\nabla \cdot (\nabla \pi(x) - \pi(x) \nabla \log p(x)) = 0.$$</p>
@@ -376,4 +1034,18 @@ $$dX_t = \mu(X_t) \cdot dt + \sigma(X_t) \, dB_t^n.$$</p>
 <p>And since both \(\pi(x)\) and \(p(x)\) are probability distributions, their integrals evaluate to one and we therefore have \(A = 1\) and</p>
 <p>$$\pi(x) = p(x).$$</p>
 <p>Therefore, the stationary distribution of \(X_t\) is precisely the distribution \(p(x)\). This means we can draw a sample from \(p(x)\) by sampling \(X_0\) from some arbitrary distribution (preferably one already close to \(p(x)\) if we can) and letting \(X_t\) run for a long time. After this burn in period, we examine \(X_t\) and the result is an approximate sample from \(p(x)\). This is an example of a <strong>Markov Chain Monte Carlo</strong> technique.</p>
-<!--kg-card-end: markdown-->]]></content:encoded></item></channel></rss>
+
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+        <h3>Philip Etter: Professional Blog</h3>
+            <p>Applied Mathematics and Data Science</p>
+        <p><a href="https://uniqueuptopermutation.github.io">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>
