@@ -1,4 +1,4 @@
 User-agent: *
-Sitemap: https://uniqueuptopermutation.github.io/sitemap.xml
+Sitemap: uniqueuptopermutation.github.io/sitemap.xml
 Disallow: /ghost/
 Disallow: /p/
