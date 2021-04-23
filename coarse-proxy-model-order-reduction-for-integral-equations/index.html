@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Coarse Proxy Reduced Basis Methods for Integral Equations</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/main/css/main.css?v=805106639e" />
+
+    <link rel="canonical" href="https://uniqueuptopermutation.github.io/coarse-proxy-model-order-reduction-for-integral-equations/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://uniqueuptopermutation.github.io/coarse-proxy-model-order-reduction-for-integral-equations/amp/" />
+    
+    <meta property="og:site_name" content="Philip Etter&#x27;s Mathematical Corner" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Coarse Proxy Reduced Basis Methods for Integral Equations" />
+    <meta property="og:description" content="In this paper, we present a novel method for building reduced basis models for integral equations." />
+    <meta property="og:url" content="https://uniqueuptopermutation.github.io/coarse-proxy-model-order-reduction-for-integral-equations/" />
+    <meta property="og:image" content="https://uniqueuptopermutation.github.io/content/images/2021/04/25564_Crop-7.jpg" />
+    <meta property="article:published_time" content="2021-04-23T19:37:56.000Z" />
+    <meta property="article:modified_time" content="2021-04-23T19:37:56.000Z" />
+    <meta property="article:tag" content="Math" />
+    <meta property="article:tag" content="Research" />
+    <meta property="article:tag" content="Reduced Basis" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Coarse Proxy Reduced Basis Methods for Integral Equations" />
+    <meta name="twitter:description" content="In this paper, we present a novel method for building reduced basis models for integral equations." />
+    <meta name="twitter:url" content="https://uniqueuptopermutation.github.io/coarse-proxy-model-order-reduction-for-integral-equations/" />
+    <meta name="twitter:image" content="https://uniqueuptopermutation.github.io/content/images/2021/04/25564_Crop-7.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Philip Etter" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Math, Research, Reduced Basis" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="534" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Philip Etter&#x27;s Mathematical Corner",
+        "url": "https://uniqueuptopermutation.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://uniqueuptopermutation.github.io/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Philip Etter",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://uniqueuptopermutation.github.io/content/images/2021/04/9400185.jpeg",
+            "width": 400,
+            "height": 400
+        },
+        "url": "https://uniqueuptopermutation.github.io/author/philip/",
+        "sameAs": [
+            "http://github.com/UniqueUpToPermutation"
+        ]
+    },
+    "headline": "Coarse Proxy Reduced Basis Methods for Integral Equations",
+    "url": "https://uniqueuptopermutation.github.io/coarse-proxy-model-order-reduction-for-integral-equations/",
+    "datePublished": "2021-04-23T19:37:56.000Z",
+    "dateModified": "2021-04-23T19:37:56.000Z",
+    "keywords": "Math, Research, Reduced Basis",
+    "description": "In this paper, we present a novel method for building reduced basis models for integral equations.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://uniqueuptopermutation.github.io/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.3" />
+    <link rel="alternate" type="application/rss+xml" title="Philip Etter&#x27;s Mathematical Corner" href="https://uniqueuptopermutation.github.io/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="https://uniqueuptopermutation.github.io/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><style>:root {--ghost-accent-color: #1d5d72;}</style>
+
+</head>
+<body class="is-preload post-template tag-math tag-research tag-reduced-basis">
+
+    <div id="wrapper">
+        <main id="main">
+            <div class="inner">
+
+                <header id="header">
+                        <a href="https://uniqueuptopermutation.github.io" class="logo">Philip Etter&#x27;s Mathematical Corner</a>
+                    <ul class="icons">
+                        <li><a href="https://feedly.com/i/subscription/feed/https://uniqueuptopermutation.github.io/rss/" class="icon fa-rss" target="_blank" rel="noopener"><span class="label" title="RSS">RSS</span></a></li>
+                    </ul>
+                </header>
+
+                
+<section>
+
+    <header class="main content">
+        <span class="date">April 23, 2021</span>
+        <h1>Coarse Proxy Reduced Basis Methods for Integral Equations</h1>
+            <p class="content">In this paper, we present a novel method for building reduced basis models for integral equations.</p>
+    </header>
+
+
+    <div class="content">
+        <figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://arxiv.org/abs/1911.05331"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Coarse-Proxy Reduced Basis Methods for Integral Equations</div><div class="kg-bookmark-description">In this paper, we introduce a new reduced basis methodology for acceleratingthe computation of large parameterized systems of high-fidelity integralequations. Core to our methodology is the use of coarse-proxy models (i.e.,lower resolution variants of the underlying high-fidelity equations) toid…</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://static.arxiv.org/static/browse/0.3.2.6/images/icons/favicon.ico"><span class="kg-bookmark-author">arXiv.org</span><span class="kg-bookmark-publisher">Philip A. Etter</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://static.arxiv.org/static/browse/0.3.2.6/images/icons/social/bibsonomy.png"></div></a></figure><p>Many high-fidelity physics models require a huge amount<em> </em>of computing resources - think simulating the drag force across an airplane. Practically, this means that important tasks like uncertainty quantification and Bayesian inference are computationally intractable, since they require not just one, but many solves of the underlying high-fidelity model. Reduced order modelling techniques use data to build fast approximate models as substitutes the original high fidelity physics model. These approximate models are useful for the aforementioned situations where one needs to query the high fidelity physics model many times in succession for roughly similar parameters.</p><p>However, much of the research in model order reduction revolves around differential equations rather than integral equations. While differential equations are more widely used in general, there are many fields and situations in which integral equations may be preferable. This is for a number of reasons:</p><!--kg-card-begin: markdown--><ul>
+<li>Integral equations tend to be better conditioned.</li>
+<li>In fields involving wave propagation (electromagnetism, acoustics, etc.) one can often convert differential equations over the interior of a region into integral equations over the boundary --- essentially reducing a sparse 3D problem into a dense 2D one.</li>
+<li>Analytic approximation techniques like <strong>fast multiple method</strong> can make evaluating integral operators very efficient; making them very suitable for iterative methods.</li>
+</ul>
+<!--kg-card-end: markdown--><p>Therefore, given the utility of integral equations and the potential speed-up model order reduction offers for tasks like uncertainty quantification and Bayesian inference, and the fact that integral equations have been under-served by the model order reduction community at large, building model order reduction techniques for integral equations is a worthwhile task. In particular, in this paper, we focus on the classical <em>reduced basis </em>techniques.</p><p>The classical reduced basis method roughly boils down to the following scheme:</p><!--kg-card-begin: markdown--><ol>
+<li>Suppose one has a (discrete PDE) linear algebra problem parameterized by a set of parameters \(\mu\) (i.e., the shape of your airplane's wings, the scattering background of your problem, etc.). We write the mathematical problem as:</li>
+</ol>
+<p>$$ \mathbf{A}(\mu) \mathbf{x}(\mu) = \mathbf{b}(\mu) $$</p>
+<ol start="2">
+<li>
+<p>(Offline) One isolates a collection of parameters \(\mu_1, ..., \mu_n\) and solve their corresponding problems to obtain \(\mathbf{x}(\mu_1), ..., \mathbf{x}(\mu_n)\). Note this is an expensive step but can be done offline</p>
+</li>
+<li>
+<p>(Offline) One uses \(\mathbf{x}(\mu_1), ..., \mathbf{x}(\mu_n)\) to compute a reduced basis matrix \(\mathbf{\Phi}\).</p>
+</li>
+<li>
+<p>(Online) For a new \(\mu'\), we can solve the much lower dimensional Galerkin projection of the original problem:</p>
+</li>
+</ol>
+<p>$$ (\mathbf{\Phi}^T \mathbf{A}(\mu') \mathbf{\Phi}) \mathbf{y} = \mathbf{\Phi}^T \mathbf{b}(\mu')$$</p>
+<p>And then approximate:</p>
+<p>$$ \mathbf{x}(\mu') \approx \mathbf{\Phi} \mathbf{y} $$</p>
+<!--kg-card-end: markdown--><p>We can see an example of a reduced basis \( \mathbf{\Phi}\)  below:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://uniqueuptopermutation.github.io/content/images/2021/04/basis.svg" class="kg-image" alt loading="lazy"><figcaption>An example of a reduced basis \( \mathbf{\Phi} \) we generate in our paper for a radiative transport problem.&nbsp;</figcaption></figure><p>There is a critical issue with mixing reduced basis methods and integral equations however. <strong>Namely, most reduced basis techniques have been specially developed for the type of sparse operators that typically appear in differential equations problems</strong>. The operators in the integral equations world are extremely dense in comparison and forming the reduced operator \( \mathbf{\Phi}^T \mathbf{A}(\mu') \mathbf{\Phi} \) is difficult to do outright or using existing reduced basis techniques (discrete empirical interpolation, etc.).</p><p>There is also another issue: <strong>How to efficiently choose the samples \( \mu_1, ..., \mu_n \)? </strong>Our new method addresses both of these issues by introducing the idea of <strong>coarse proxy models</strong>.</p><p>A <strong>coarse proxy</strong> <strong>model</strong> for a physics model<strong> </strong>is essentially an <em>a priori</em> sloppy estimate of the output we care about. For example, instead of computing a solution on a 1024 x 1024 grid, we can compute a solution on a 64 x 64. The important part is that the coarse solution gives some impression as to the "important" parameter instances. By using a column pivoted QR factorization of these sloppy coarse outputs, we can identify the "important" parameters \( \mu_1, ..., \mu_n \) in the sample space and build a reduced basis model by solving the full physics model for each of these parameters. </p><p>Furthermore, by explicitly assembling important samples of the dense corresponding operators \( \mathbf{A}(\mu_1), ..., \mathbf{A}(\mu_n) \) (which cannot be assembled in full). We can compute interpolation weights that we allow us to form reduced operators for new parameters \( \mu' \) by interpolating explicitly computed reduced operators \( \mathbf{\Phi}^T \mathbf{A}(\mu_1) \mathbf{\Phi}\), \(...\), \(\mathbf{\Phi}^T \mathbf{A}(\mu_n) \mathbf{\Phi} \) by utilizing samples from of the dense operator \( \mathbf{A}(\mu') \). This allows us to efficiently approximate new reduced operators.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://uniqueuptopermutation.github.io/content/images/2021/04/framework-1.svg" class="kg-image" alt loading="lazy"><figcaption>An overview of our novel technique.</figcaption></figure><p>We demonstrate in our paper that this technique has the ability to substantially reduce computation time when solving a large collection of parameterized integral equations. Our examples include problems in radiative transport as well as integral formulations of the Laplace equation. We can achieve significant speedups without much sacrifice to accuracy.</p><figure class="kg-card kg-image-card"><img src="https://uniqueuptopermutation.github.io/content/images/2021/04/rte_ex1sol.svg" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="https://uniqueuptopermutation.github.io/content/images/2021/04/rte_ex2sol.svg" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://uniqueuptopermutation.github.io/content/images/2021/04/rte_ex3sol.svg" class="kg-image" alt loading="lazy"><figcaption>A comparison between a reference ground truth (ref) and our method (RBM), error is given on the right.</figcaption></figure>
+    </div>
+
+
+    <footer class="post-footer">
+
+        <div class="authors">
+            <a class="author-box" href="/author/philip/">
+                <img class="author-profile-image" src="https://uniqueuptopermutation.github.io/content/images/2021/04/9400185.jpeg" alt="Philip Etter" />
+                <section class="author-box-content">
+                    <div class="author-box-label">Author</div>
+                    <h5 class="author-box-name">Philip Etter</h5>
+                    <p>I&#x27;m a fourth year PhD student at the Stanford Institute for Computational and Mathematical Engineering. I like to identify as a mathemagician - and sometimes also an amateur composer.</p>
+                </section>
+            </a>
+        </div>
+
+    </footer>
+
+
+</section>
+
+<script>
+    var images = document.querySelectorAll('.kg-gallery-image img');
+    images.forEach(function (image) {
+        var container = image.closest('.kg-gallery-image');
+        var width = image.attributes.width.value;
+        var height = image.attributes.height.value;
+        var ratio = width / height;
+        container.style.flex = ratio + ' 1 0%';
+    })
+</script>
+
+
+            </div>
+        </main>
+
+        <div id="sidebar">
+    <div class="inner">
+
+            <nav id="menu">
+    <header class="major">
+        <h2>Menu</h2>
+    </header>
+    <ul class="links">
+        <li class="nav-home "><a href="https://uniqueuptopermutation.github.io/">Home</a></li>
+        <li class="nav-about-me "><a href="https://uniqueuptopermutation.github.io/about/">About Me</a></li>
+        <li class="nav-papers "><a href="https://uniqueuptopermutation.github.io/papers/">Papers</a></li>
+        <li class="nav-projects "><a href="https://uniqueuptopermutation.github.io/projects/">Projects</a></li>
+        <li class="nav-tutorials "><a href="https://uniqueuptopermutation.github.io/tutorials/">Tutorials</a></li>
+        <li class="nav-github "><a href="https://github.com/UniqueUpToPermutation">Github</a></li>
+        <li class="nav-resume "><a href="https://cap.stanford.edu/profiles/viewResume?facultyId=180315&name=Philip_Etter">Resume</a></li>
+    </ul>
+</nav>
+
+        <section>
+            <header class="major">
+                <h2>Recent Posts</h2>
+            </header>
+            <div class="mini-posts">
+                    <article>
+                        <h3><a href="/coarse-proxy-model-order-reduction-for-integral-equations/">Coarse Proxy Reduced Basis Methods for Integral Equations</a></h3>
+                        <p>In this paper, we present a novel method for building reduced basis models for integral equations.</p>
+                    </article>
+                    <article>
+                        <h3><a href="/diffeqstochasticspart2/">Differential Equations from Stochastic Processes: Part II</a></h3>
+                        <p>A tutorial on the deep connection between elliptic/parabolic systems and stochastic processes. The connection gives a lot of useful intuition about how to interpret elliptic/parabolic PDEs as well as Laplacian systems on graphs. Part II covers continuous time stochastic processes.</p>
+                    </article>
+                    <article>
+                        <h3><a href="/diffeqstochastics/">Differential Equations from Stochastic Processes: Part I</a></h3>
+                        <p>A quick tutorial on the deep connection between elliptic/parabolic systems and stochastic processes. The connection gives a lot of useful intuition about how to interpret elliptic/parabolic PDEs as well as Laplacian systems on graphs. Part I covers discrete time stochastic processes on graphs.</p>
+                    </article>
+            </div>
+        </section>
+
+
+        <footer id="footer">
+            <p class="copyright">&copy; Philip Etter&#x27;s Mathematical Corner - All rights reserved<br>
+            Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a>, Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></p>
+        </footer>
+
+    </div>
+</div>
+
+    </div>
+
+    <script src="/assets/main/js/jquery.min.js?v=805106639e"></script>
+    <script src="/assets/main/js/browser.min.js?v=805106639e"></script>
+    <script src="/assets/main/js/breakpoints.min.js?v=805106639e"></script>
+    <script src="/assets/main/js/util.js?v=805106639e"></script>
+    <script src="/assets/main/js/main.js?v=805106639e"></script>
+
+    
+
+</body>
+</html>

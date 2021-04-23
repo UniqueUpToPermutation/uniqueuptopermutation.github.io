@@ -9,19 +9,19 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="/assets/main/css/main.css?v=fbac4926db" />
+    <link rel="stylesheet" type="text/css" href="/assets/main/css/main.css?v=805106639e" />
 
     <link rel="canonical" href="https://uniqueuptopermutation.github.io/about/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     
-    <meta property="og:site_name" content="Philip Etter&#x27;s Mathemagical Corner" />
+    <meta property="og:site_name" content="Philip Etter&#x27;s Mathematical Corner" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="About Me" />
     <meta property="og:description" content="Hello there! If you&#x27;ve made your way to this particular corner of the internet, presumably you&#x27;re either interested in hiring me as a scientist or you&#x27;re curious as to the author of this motley collection of academic topics." />
     <meta property="og:url" content="https://uniqueuptopermutation.github.io/about/" />
     <meta property="og:image" content="https://uniqueuptopermutation.github.io/content/images/2021/04/25564_Crop-7.jpg" />
     <meta property="article:published_time" content="2021-04-21T19:29:25.000Z" />
-    <meta property="article:modified_time" content="2021-04-22T20:58:45.000Z" />
+    <meta property="article:modified_time" content="2021-04-23T18:24:07.000Z" />
     <meta property="article:tag" content="Getting Started" />
     
     <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +42,7 @@
     "@type": "Article",
     "publisher": {
         "@type": "Organization",
-        "name": "Philip Etter&#x27;s Mathemagical Corner",
+        "name": "Philip Etter&#x27;s Mathematical Corner",
         "url": "https://uniqueuptopermutation.github.io/",
         "logo": {
             "@type": "ImageObject",
@@ -68,7 +68,7 @@
     "headline": "About Me",
     "url": "https://uniqueuptopermutation.github.io/about/",
     "datePublished": "2021-04-21T19:29:25.000Z",
-    "dateModified": "2021-04-22T20:58:45.000Z",
+    "dateModified": "2021-04-23T18:24:07.000Z",
     "keywords": "Getting Started",
     "description": "Hello there! If you&#x27;ve made your way to this particular corner of the internet, presumably you&#x27;re either interested in hiring me as a scientist or you&#x27;re curious as to the author of this motley collection of academic topics.",
     "mainEntityOfPage": {
@@ -79,7 +79,7 @@
     </script>
 
     <meta name="generator" content="Ghost 4.3" />
-    <link rel="alternate" type="application/rss+xml" title="Philip Etter&#x27;s Mathemagical Corner" href="https://uniqueuptopermutation.github.io/rss/" />
+    <link rel="alternate" type="application/rss+xml" title="Philip Etter&#x27;s Mathematical Corner" href="https://uniqueuptopermutation.github.io/rss/" />
     <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="https://uniqueuptopermutation.github.io/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
 .gh-post-upgrade-cta {
     display: flex;
@@ -156,7 +156,7 @@
             <div class="inner">
 
                 <header id="header">
-                        <a href="https://uniqueuptopermutation.github.io" class="logo">Philip Etter&#x27;s Mathemagical Corner</a>
+                        <a href="https://uniqueuptopermutation.github.io" class="logo">Philip Etter&#x27;s Mathematical Corner</a>
                     <ul class="icons">
                         <li><a href="https://feedly.com/i/subscription/feed/https://uniqueuptopermutation.github.io/rss/" class="icon fa-rss" target="_blank" rel="noopener"><span class="label" title="RSS">RSS</span></a></li>
                     </ul>
@@ -173,7 +173,7 @@
 
 
     <div class="content">
-        <p>Hello there! If you've made your way to this particular corner of the internet, presumably you're either interested in hiring me as a scientist or you're curious as to the author of this motley collection of academic topics.</p><p>Either way - the question of who I am is a relatively difficult question to answer. Of course, there are the facts of the matter: I'm a fourth year PhD student at the Stanford Institute for Computational and Mathematical Engineering. My specialty is applied mathematics for data science problems. But that description by itself is woefully incomplete. I'm also interested in physics, computer graphics, real-time simulation, politics, and classical composition. I generally work on whatever I find interesting, and I find a lot of different things interesting at different times.</p><p>If you're also interested, let me tell you about some of them:</p><hr><h2 id="the-purely-academic">The Purely Academic </h2><p>My thesis work revolves around the following question: <em>Suppose that we have a matrix </em>\( \mathbf{A} \) <em>that is corrupted by noise</em>. This may be for a number of reasons - but principally I'm interested in linear systems that must be estimated from incomplete or noisy data. This is relatively common across computational physics and machine learning. In practice, this means that instead of having access to \( \mathbf{A} \) itself, we have access to an estimator \( \mathbf{\hat{A}} \). And therefore, naively, instead of solving the linear system<br>$$ \mathbf{A} \mathbf{x} = \mathbf{b}\,,$$<br>one is instead solving the linear system<br>$$ \mathbf{\hat{A}} \mathbf{\hat{x}} = \mathbf{b}\,.$$<br>Obviously, this means that there will always be an error between the true solution \( \mathbf{x} \) we want and the solution \( \hat{\mathbf{x}} \) we can compute via a linear system solve from the available data. This raises the following fundamental question of my thesis: <em>is there any transformation we can apply to \( \mathbf{\hat{A}} \) that will make the solution \( \mathbf{\hat{x}} \) more accurate?</em> </p><p>The short answer is <em>yes.</em></p><p>The slightly longer answer can be found in the following blog posts:</p><p><strong>[UNDER CONSTRUCTION - COME BACK LATER :) ]</strong></p><p>I've also done some work in the area of model order reduction. In short, many high-fidelity physics models require a huge amount<em> </em>of computing resources - think simulating the drag force across an airplane. Practically, this means that important tasks like uncertainty quantification and Bayesian inference are computationally intractable, since they require not just one, but many solves of the underlying high-fidelity model. Reduced order modelling techniques use data to build fast approximate models as proxies for the original high fidelity physics model. These proxies are useful for the aforementioned situations where one needs to query the high fidelity physics model many times in succession for roughly similar parameters. </p><p>Unfortunately, the field has been plagued by the fact that there are usually <em>no guarantees that the output of a reduced order model is actually correct.</em> Unlike in machine learning proper, where there is usually not a ground truth to compare oneself to outside of the data, in model order reduction, one actually has access to the true underlying model. In data science terms: most of the current techniques cannot guarantee that the reduced order models generalize. For problems where correctness is critical (think building a bridge), this is often a deal-breaker.</p><p>Some of my research has been on building online algorithms that will update reduced order models during deployment to efficiently ensure they output a correct solution to a certain tolerance. Essentially, this means equipping reduced order models with generalization guarantees. You can read more about this in my blog post:</p><p><strong>[UNDER CONSTRUCTION - COME BACK LATER :) ]</strong></p><p>Finally, I've also done some work on extending reduced order model techniques to integral equations. Most of the research on reduced order modelling assumes that the underlying systems are sparse - but integral equations feature very dense systems that cannot be stored in memory. You can read more about this here:</p><p><strong>[UNDER CONSTRUCTION - COME BACK LATER :) ]</strong></p><hr><h2 id="the-quasi-academic">The Quasi-Academic</h2><p>In addition to my purely academic work, I've also done work in industry and lab settings. I've worked as a:</p><!--kg-card-begin: markdown--><ul>
+        <p>Hello there! If you've made your way to this particular corner of the internet, presumably you're either interested in hiring me as a scientist or you're curious as to the author of this motley collection of academic topics.</p><p>Either way - the question of who I am is a relatively difficult question to answer. Of course, I can list some facts: I'm a fourth year PhD student at the Stanford Institute for Computational and Mathematical Engineering. My advisor is <a href="https://web.stanford.edu/~lexing/">Lexing Ying</a> in the Stanford Mathematics Department - and my specialty is applied mathematics for data science problems. But that description by itself is pretty incomplete. I'm also interested in physics, computer graphics, real-time simulation, politics, and classical composition. I generally work on whatever I find interesting, and I find a lot of different things interesting at different times.</p><p>If you're also interested, let me tell you about some of them:</p><hr><h2 id="the-purely-academic">The Purely Academic </h2><p>My thesis work revolves around the following question: <em>Suppose that we have a matrix </em>\( \mathbf{A} \) <em>that is corrupted by noise</em>. This may be for a number of reasons - but principally I'm interested in linear systems that must be estimated from incomplete or noisy data. This is relatively common across computational physics and machine learning. In practice, this means that instead of having access to \( \mathbf{A} \) itself, we have access to an estimator \( \mathbf{\hat{A}} \). And therefore, naively, instead of solving the linear system<br>$$ \mathbf{A} \mathbf{x} = \mathbf{b}\,,$$<br>one is instead solving the linear system<br>$$ \mathbf{\hat{A}} \mathbf{\hat{x}} = \mathbf{b}\,.$$<br>Obviously, this means that there will always be an error between the true solution \( \mathbf{x} \) we want and the solution \( \hat{\mathbf{x}} \) we can compute via a linear system solve from the available data. This raises the following fundamental question of my thesis: <em>is there any transformation we can apply to \( \mathbf{\hat{A}} \) that will make the solution \( \mathbf{\hat{x}} \) more accurate?</em> </p><p>The short answer is <em>yes.</em></p><p>The slightly longer answer can be found in the following blog posts:</p><p><strong>[UNDER CONSTRUCTION - COME BACK LATER :) ]</strong></p><p>I've also done some work in the area of model order reduction. In short, many high-fidelity physics models require a huge amount<em> </em>of computing resources - think simulating the drag force across an airplane. Practically, this means that important tasks like uncertainty quantification and Bayesian inference are computationally intractable, since they require not just one, but many solves of the underlying high-fidelity model. Reduced order modelling techniques use data to build fast approximate models as proxies for the original high fidelity physics model. These proxies are useful for the aforementioned situations where one needs to query the high fidelity physics model many times in succession for roughly similar parameters. </p><p>Unfortunately, the field has been plagued by the fact that there are usually <em>no guarantees that the output of a reduced order model is actually correct.</em> Unlike in machine learning proper, where there is usually not a ground truth to compare oneself to outside of the data, in model order reduction, one actually has access to the true underlying model. In data science terms: most of the current techniques cannot guarantee that the reduced order models generalize. For problems where correctness is critical (think building a bridge), this is often a deal-breaker.</p><p>Some of my research has been on building online algorithms that will update reduced order models during deployment to efficiently ensure they output a correct solution to a certain tolerance. Essentially, this means equipping reduced order models with generalization guarantees. You can read more about this in my blog post:</p><p><strong>[UNDER CONSTRUCTION - COME BACK LATER :) ]</strong></p><p>Finally, I've also done some work on extending reduced order model techniques to integral equations. Most of the research on reduced order modelling assumes that the underlying systems are sparse - but integral equations feature very dense systems that cannot be stored in memory. You can read more about this here:</p><p><strong>[UNDER CONSTRUCTION - COME BACK LATER :) ]</strong></p><hr><h2 id="the-quasi-academic">The Quasi-Academic</h2><p>In addition to my purely academic work, I've also done work in industry and lab settings. I've worked as a:</p><!--kg-card-begin: markdown--><ul>
 <li><em>Realtime Simulation Intern</em> at <strong>Facebook Reality Labs</strong></li>
 <li><em>Applied Data Scientist Intern</em> at <strong>Amazon</strong></li>
 <li><em>Data Science Research Intern</em> at <strong>Sandia National Labs</strong></li>
@@ -232,6 +232,10 @@
             </header>
             <div class="mini-posts">
                     <article>
+                        <h3><a href="/coarse-proxy-model-order-reduction-for-integral-equations/">Coarse Proxy Reduced Basis Methods for Integral Equations</a></h3>
+                        <p>In this paper, we present a novel method for building reduced basis models for integral equations.</p>
+                    </article>
+                    <article>
                         <h3><a href="/diffeqstochasticspart2/">Differential Equations from Stochastic Processes: Part II</a></h3>
                         <p>A tutorial on the deep connection between elliptic/parabolic systems and stochastic processes. The connection gives a lot of useful intuition about how to interpret elliptic/parabolic PDEs as well as Laplacian systems on graphs. Part II covers continuous time stochastic processes.</p>
                     </article>
@@ -244,7 +248,7 @@
 
 
         <footer id="footer">
-            <p class="copyright">&copy; Philip Etter&#x27;s Mathemagical Corner - All rights reserved<br>
+            <p class="copyright">&copy; Philip Etter&#x27;s Mathematical Corner - All rights reserved<br>
             Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a>, Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></p>
         </footer>
 
@@ -253,11 +257,11 @@
 
     </div>
 
-    <script src="/assets/main/js/jquery.min.js?v=fbac4926db"></script>
-    <script src="/assets/main/js/browser.min.js?v=fbac4926db"></script>
-    <script src="/assets/main/js/breakpoints.min.js?v=fbac4926db"></script>
-    <script src="/assets/main/js/util.js?v=fbac4926db"></script>
-    <script src="/assets/main/js/main.js?v=fbac4926db"></script>
+    <script src="/assets/main/js/jquery.min.js?v=805106639e"></script>
+    <script src="/assets/main/js/browser.min.js?v=805106639e"></script>
+    <script src="/assets/main/js/breakpoints.min.js?v=805106639e"></script>
+    <script src="/assets/main/js/util.js?v=805106639e"></script>
+    <script src="/assets/main/js/main.js?v=805106639e"></script>
 
     
 
