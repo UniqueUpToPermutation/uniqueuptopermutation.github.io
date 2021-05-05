@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Rendering Theory I: Radiative Transport</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/main/css/main.css?v=0e521d223a" />
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://uniqueuptopermutation.github.io/renderingtheory1/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://uniqueuptopermutation.github.io/renderingtheory1/amp/" />
+    
+    <meta property="og:site_name" content="Philip Etter&#x27;s Mathematical Corner" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Rendering Theory I: Radiative Transport" />
+    <meta property="og:description" content="The first in a series of tutorials about the mathematical underpinnings of offline and real-time physically based rendering. This tutorial covers the differential formulation of radiative transport." />
+    <meta property="og:url" content="https://uniqueuptopermutation.github.io/renderingtheory1/" />
+    <meta property="og:image" content="https://uniqueuptopermutation.github.io/content/images/2021/05/Hand.jpg" />
+    <meta property="article:published_time" content="2021-05-05T01:34:46.000Z" />
+    <meta property="article:modified_time" content="2021-05-05T01:45:57.000Z" />
+    <meta property="article:tag" content="Tutorial" />
+    <meta property="article:tag" content="Math" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rendering Theory I: Radiative Transport" />
+    <meta name="twitter:description" content="The first in a series of tutorials about the mathematical underpinnings of offline and real-time physically based rendering. This tutorial covers the differential formulation of radiative transport." />
+    <meta name="twitter:url" content="https://uniqueuptopermutation.github.io/renderingtheory1/" />
+    <meta name="twitter:image" content="https://uniqueuptopermutation.github.io/content/images/2021/05/Hand.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Philip Etter" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Tutorial, Math" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="450" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Philip Etter&#x27;s Mathematical Corner",
+        "url": "https://uniqueuptopermutation.github.io/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://uniqueuptopermutation.github.io/favicon.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Philip Etter",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://uniqueuptopermutation.github.io/content/images/2021/04/9400185.jpeg",
+            "width": 400,
+            "height": 400
+        },
+        "url": "https://uniqueuptopermutation.github.io/author/philip/",
+        "sameAs": [
+            "http://github.com/UniqueUpToPermutation"
+        ]
+    },
+    "headline": "Rendering Theory I: Radiative Transport",
+    "url": "https://uniqueuptopermutation.github.io/renderingtheory1/",
+    "datePublished": "2021-05-05T01:34:46.000Z",
+    "dateModified": "2021-05-05T01:45:57.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://uniqueuptopermutation.github.io/content/images/2021/05/Hand.jpg",
+        "width": 800,
+        "height": 450
+    },
+    "keywords": "Tutorial, Math",
+    "description": "The first in a series of tutorials about the mathematical underpinnings of offline and real-time physically based rendering. This tutorial covers the differential formulation of radiative transport.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://uniqueuptopermutation.github.io/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.3" />
+    <link rel="alternate" type="application/rss+xml" title="Philip Etter&#x27;s Mathematical Corner" href="https://uniqueuptopermutation.github.io/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="https://uniqueuptopermutation.github.io/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><style>:root {--ghost-accent-color: #1d5d72;}</style>
+
+</head>
+<body class="is-preload post-template tag-tutorial tag-math">
+
+    <div id="wrapper">
+        <main id="main">
+            <div class="inner">
+
+                <header id="header">
+                        <a href="https://uniqueuptopermutation.github.io" class="logo">Philip Etter&#x27;s Mathematical Corner</a>
+                    <ul class="icons">
+                        <li><a href="https://feedly.com/i/subscription/feed/https://uniqueuptopermutation.github.io/rss/" class="icon fa-rss" target="_blank" rel="noopener"><span class="label" title="RSS">RSS</span></a></li>
+                    </ul>
+                </header>
+
+                
+<section>
+
+    <header class="main content">
+        <span class="date">May 5, 2021</span>
+        <h1>Rendering Theory I: Radiative Transport</h1>
+            <p class="content">The first in a series of tutorials about the mathematical underpinnings of offline and real-time physically based rendering. This tutorial covers the differential formulation of radiative transport.</p>
+    </header>
+
+    <div class="image main"><img src="/content/images/2021/05/Hand.jpg" alt="Rendering Theory I: Radiative Transport" /></div>
+
+    <div class="content">
+        <!--kg-card-begin: markdown--><p>Hey there! If you're reading this, presumbly you're interested in a more <em>rigorous</em> treatment of the stuff people usually learn in an advanced computer graphics class. I highly enjoyed taking <a href="https://graphics.stanford.edu/courses/cs348b/">CS348B</a> at Stanford. I even got <a href="https://graphics.stanford.edu/courses/cs348b-competition/cs348b-18/">first prize</a> in the rendering competition. However, I always thought there was a market for a series of tutorials aimed at people who have a solid mathematical background by a person who is used to writing about mathematics. In this tutorial, I will probably not shy away from technical things, so be prepared! I hope to cover some basic stuff about light transport theory, how to simulate it via Monte Carlo, as well as how to build real-time physically-based approximations using the image-based lighting techniques popularized by Unreal Engine 4. Anyway, let's get started!</p>
+<h2 id="the-photon">The Photon</h2>
+<p><img src="https://uniqueuptopermutation.github.io/content/images/2021/05/photon.jpg" alt="A photon, presumably." loading="lazy"></p>
+<p>Let's first start by thinking about the simplest object involved in light transfer: the photon. If you're interested in what a photon actually is - an excitation of a quantum field - you'll have to learn quantum field theory, but for our purposes, imagine that a photon is just a discrete particle of light travelling through space. A photon has a few elementary properties, including:</p>
+<ul>
+<li>
+<p><strong>Position</strong>: At any given time \(t\), every photon has a position \(X_t \in \mathbb{R}^3\).</p>
+</li>
+<li>
+<p><strong>Direction</strong>: At any given time \(t\), every photon has a direction \(\mathbf{\omega}_t \in \mathbb{S}^2\). While direction may vary, the speed of a photon in free space is always constant as \(c \approx 3 \cdot 10^8 \, m/s\).</p>
+</li>
+<li>
+<p><strong>Wavelength</strong>: A photon has a specific wavelength \(\lambda &gt; 0\). The electromagnetic field carrying a photon usually has a periodicity and \(\lambda\) is the length of a single period.</p>
+</li>
+<li>
+<p><strong>Frequency</strong>: A photon has a frequency \(\nu\). The frequency measures the time periodicity at which the underlying electromagnetic field - locally, the oscillations of electromagnetic field returns to its original configuration every \(1/\nu\) seconds. The frequency and wavelength are related by the speed of the photon,</p>
+<p>$$\lambda \nu = c \,.$$</p>
+</li>
+<li>
+<p><strong>Energy</strong>: A photon carries with it a certain amount of energy. This energy comes from the light source that generate the photon via spontaneous or stimulated emission. The <strong>Planck-Einstein relation</strong> postulates that the energy a photon carries is directly porpotional to its frequency. The constant of porportionality is called the <strong>Planck constant</strong> \(h\):</p>
+<p>$$E = h\nu\,.$$</p>
+</li>
+<li>
+<p><strong>Momentum</strong>: As postulated by de Broglie, the momentum \(p\) of a particle is inversely porpotional to its wavelength, i.e.,</p>
+<p>$$p = \frac{h}{\mu} = \frac{E}{c} \,.$$</p>
+</li>
+</ul>
+<p>For our purposes the important parts of a photon are really only its position, direction, and wavelength. In the coming sections, we will therefore focus on \((X_t, \omega_t, \lambda)\).</p>
+<h2 id="photon-motion-in-free-space">Photon Motion in Free Space</h2>
+<p>Photons don't just sit there, they tend to move around. In fact, they move around at the speed of light (which is pretty fast). Therefore, if we're describing the motion of a single photon \((X_t, \omega_t, \lambda)\) in free space, it should satisfy the basic equation of motion:</p>
+<p>$$\frac{dX_t}{dt} = c \, \omega_t \,.$$</p>
+<p>In computer graphics, photons tend not to interact with each other, so if we have a collection of photons \((X_t^{(i)}, \omega_t^{(i)}, \lambda^{(i)})\), the equations are motions are not coupled in any way:</p>
+<p>$$\frac{dX_t^{(i)}}{dt} = c \, \omega_t^{(i)} \,.$$</p>
+<p>Note that to complete the equations, we need to specify the directions \(\omega_t^{(i)}\). In free space, once a photon has been released, it will retain its direction and speed as long as it doesn't hit anything. Therefore, the free space equations for photon motion are exceedingly simple, as the directions \(\omega_t^{(i)}\) are all constants \(\omega^{(i)}\):</p>
+<p>$$\frac{dX_t^{(i)}}{dt} = c \, \omega^{(i)} \,.$$</p>
+<p>Starting from initial positions \(X_0^{(i)}\), these ODEs are very easy to solve:</p>
+<p>$$X_t^{(i)} = X_0^{(i)} + c \omega^{(i)} t \,.$$</p>
+<p>Note that this analysis is in terms of individual non-interacting particles \(X_t^{(i)}\). This is usually refered to as a <strong>Lagrangian formulation.</strong> Most of the time however, the motion of individual particles is not the end goal. Instead, we are often interested the distribution of particles \(\rho_t\). This distribution \(\rho_t(x, \omega)\) is specified as a function of both a position in space \(x \in \mathbb{R}^3\) and a direction \(\omega \in \mathbb{S}^2\). Note that the evolution of \(\rho_t(x, \omega)\) is not tied to the viewpoint of the individual particles, but rather to the viewpoint of individual locations in free space. This distribution-based view is referred to as an <strong>Eulerian formulation.</strong></p>
+<p>How does one go from the Lagrangian formulation to an Eulerian formulation? One way is via a technique known as <strong>characteristic analysis</strong>. Note that the equations of motion are completely reversible - if I specify the position and orientation of a photon at time \(t\), you can calculate backwards the position and orientation at time \(0\). Therefore, all particles follow non-intersecting <strong>characteristic paths</strong> \((X_t, \omega_t)\) through the phase space \(\mathbb{R}^3 \times \mathbb{S}^2\). This means that the distribution of particles along these paths should remain constant over time. This gives the equation:</p>
+<p>$$\frac{d\rho_t(X_t, \omega_t)}{dt} = 0 \,.$$</p>
+<p>Using the chain rule,</p>
+<p>$$\frac{d\rho_t(X_t, \omega_t)}{dt} = \nabla \rho_t(X_t, \omega_t) \cdot  \frac{dX_t}{dt} + \frac{\partial \rho_t}{\partial \omega_t}(X_t, \omega_t) \cdot \frac{d\omega_t}{dt} + \frac{\partial \rho_t(X_t, \omega_t)}{\partial t} = 0 \,.$$</p>
+<p>In the particular case of free space, \(\omega_t\) is constant, therefore, using the equation for \(dX_t / dt\) from above, we get:</p>
+<p>$$c \omega \cdot \nabla \rho_t(x, \omega) + \frac{\partial \rho_t(x, \omega)}{\partial t} = 0\,.$$</p>
+<p>Rearranged:</p>
+<p>$$\frac{\partial \rho_t(x, \omega)}{\partial t} = c \omega \cdot \nabla \rho_t(x, \omega)\,.$$</p>
+<p>If we fix \(\omega\), you might recognize this as the transport equation from partial differential equations.</p>
+<h2 id="scattering-in-homogenous-media">Scattering in Homogenous Media</h2>
+<p><img src="https://uniqueuptopermutation.github.io/content/images/2021/05/scattering.jpeg" alt="An example of scattering in homogenous media." loading="lazy"></p>
+<p>Of course, the above equations are very simplistic. They simply say that photons move in straight lines when in free space. Though this is useful, often-times photons are moving through a medium where they constantly collide with other particles and are scattered and absorbed throughout. The different ways materials scatter light are wholy reasonable for the different ways they look. For example, in the above figure, light enters the lion and then scatters around inside it until it exists and hits the viewer's eye. This gives the impression of soft lighting and partial translucency (see how the tail lets some light through with its red-orange highlights). So, if we are going to talk about light transport with an eye towards rendering things like the statue above, we are going to need to discuss how light changes direction.</p>
+<p>Unfortunately, this process is not deterministic. Or at least, it is not deterministic from the macroscopic viewpoint. Two light particles can hit the same surface and be reflected in completely different directions. We model this by saying that a light particle hitting a material (or fluid) at location \(x\) in direction \(\omega_i\) has a certain probability of being redirected in direction \(\omega_o\). It also has a certain probability of being absorbed. In the most general case, we want to think about <em>rates</em> rather than concrete probabilities. When a photon enters a scattering medium like the one pictured above, the photon will move a certain distance until it impacts something in the medium that redirects it. You should think of the contents of the medium as being random, and hence the distance travelled before a photon impacts an obstacle will be random as well. The average distance travelled before a photon hits an obstacle (i.e. scatters) is called the <strong>mean free path</strong>. The higher the mean free path, the more the photon can travel through the medium unobstructed and therefore the clearer the medium.</p>
+<p>Let us take this information and think about the parameters of a particle \((X_t, \omega_t)\) travels through a homogenous scattering medium. Occasionally \(\omega_t\) will suddenly change randomly when the particle hits something. But how do we characterize this randomness?</p>
+<p>We can model this scattering process by using a continuous \(Q\)-process on the sphere \(\mathbb{S}^2\). Recall that a \(Q\)-process \(W_t\) on \(\mathbb{S}^2\) is a continous time random process whose value changes abruptly at random times \(T_1, T_2, ..., T_n, ...\). In particular, a \(Q\)-process on \(\mathbb{S}^2\) is characterized by a generator operator \(\mathcal{L}\) which satisfies</p>
+<p>$$\mathcal{L}(\omega_i, \omega_o) = \sigma(\omega_i, \omega_o) - \mu_s(\omega_i) \, \delta(\omega_i, \omega_o) \,,$$</p>
+<p>where</p>
+<p>$$\mu_s(\omega) = \int_{\mathbb{S}^2} \sigma(\omega, \omega_o) \, d\Omega(\omega_o) \,.$$</p>
+<p>We'll talk more about \(\mathcal{L}\) later, but for now, let's focus on \(\sigma(\omega_i, \omega_o)\). You should think of the function \(\sigma(\omega_i, \omega_o)\) as the probability transition rates to go from a state \(x \rightarrow y\). That is, \(Y_t\) satisfies:<br>
+$$\mathbb{P}(W_{t + dt} \in d\Omega (\omega_o) \mid W_t = \omega_i) = \sigma(\omega_i, \omega_o) \, d\Omega \, dt + o(dt) \,.$$<br>
+In words, after a very small amount of time \(dt\), \(W_t\) has a probability of about \(\sigma(\omega_i, \omega_o) \, d\Omega \, dt\) to jump to a small solid angle \(d\Omega\) around \(\omega_o\). This function \(\sigma(\omega_i, \omega_o)\) is called the <strong>phase function</strong> and determines the rate at which a photon travelling in direction \(\omega_i\) is redirected to direction \(\omega_o\) after it hits an obstacle.</p>
+<p>How do we go from a Lagrangian formulation of a \(Q\)-process to an Eulerian formulation? Well let us ignore the position of our particles (the medium is homogenous, so position doesn't really matter when it comes to rotation) and simply examine the probability distribution of the directions \(\omega^{(i)}\) of our particles. We write the distribution of directions of our particles as \(\rho_t(\omega)\). You should think of this function as a representing the fact that there are \(\rho_t(\omega)\) photons anywhere in the medium that are in direction \(\omega\).</p>
+<p>Let us compute how the density \(\rho_t(\omega)\) changes over time at a given orientation \(\omega\). From the definition of the \(Q\)-process above, we have that</p>
+<p>$$\rho_{t + dt}(\omega) = \rho_t(\omega) + \left[\int_{\mathbb{S}^2} \rho_t(\omega_i)\, \sigma(\omega_i, \omega) \, d\Omega(\omega_i) \right] dt$$</p>
+<p>$$ - \left[ \int_{\mathbb{S}^2} \rho_t(\omega) \, \sigma(\omega, \omega_o) \, d\Omega(\omega_o)\right] dt + o(dt)\,.$$</p>
+<p>This expression is saying that the number of particles in direction \(\omega\) at time \(t + dt\) is the number of particles in direction \(\omega\) at time \(t\), plus the number of particles that are redirected from any other direction \(\omega_i\) into direction \(\omega\) over the time \(dt\), minus the number of particles that are redirected from direction \(\omega\) to any other direction \(\omega_o\) over the time \(dt\). Note that we can take \(\rho_t(\omega)\) out of the integral above to get</p>
+<p>$$\rho_{t + dt}(\omega) = \rho_t(\omega) + \left[\int_{\mathbb{S}^2} \rho_t(\omega_i)\, \sigma(\omega_i, \omega) \, d\Omega(\omega_i) \right] dt - \mu_s(\omega) \, \rho_t(\omega) \, dt + o(dt) \,.$$</p>
+<p>Rearranging the above and taking \(dt \rightarrow 0\) gives us</p>
+<p>$$\frac{\partial \rho_t}{\partial t} (\omega) = \int_{\mathbb{S}^2} \rho_t(\omega_i) \sigma(\omega_i, \omega) \, d\Omega(\omega_i) - \mu_s(\omega)\, \rho_t(\omega) \,.$$</p>
+<p>Note that the right hand side acts on the function \(\rho_t\) by applying the generator \(\mathcal{L}\):</p>
+<p>$$\frac{\partial \rho_t}{\partial t} (\omega) = \int_{\mathbb{S}^2} \rho_t(\omega_i) \, \mathcal{L}(\omega_i, \omega) \, d\Omega(\omega_i)\,.$$</p>
+<p>This often appreviated by writing</p>
+<p>$$\frac{\partial \rho_t}{\partial t} = \mathcal{L}^\ast \rho_t \,,$$</p>
+<p>where \(\mathcal{L}^\ast\) is the adjoint of \(\mathcal{L}\) (i.e., \(\mathcal{L}^\ast(\omega_i, \omega_o) = \mathcal{L}(\omega_o, \omega_i)\)). This equation is called the <strong>forward equation</strong> for a \(Q\)-process. Here, one says that the operator \(\mathcal{L}^\ast\) <em>generates</em> the time evolution of \(\rho_t\). This is very similar to deriving the forward equations for a random walk by using Ito's lemma.</p>
+<h3 id="the-statistics-of-scattering-events">The Statistics of Scattering Events</h3>
+<p>The next question one might ask is for the actual statistics of the scattering times \(T_1\), \(T_2\), \(...\), \(T_n\), \(...\). These are relatively straightforward. Note that the \(Q\)-process is Markovian and hence the intervals \(\Delta T_i = T_i - T_{i - 1}\) are independent and identically distributed. This makes sense, because once the particle has scattered, it doesn't care about anything other than its current position and orientation. In other words, the path a particle has taken to get to a certain point is irrelevant, it is only the current state that matters. To derive statistics for the \(\Delta T_i\), we need to consider the distribution \(\rho^{(0)}_t(\omega)\). \(\rho^{(0)}_t(\omega)\) is defined as the distribution of particles that have not yet scattered. At any given time the probability that a particle scatters in the next \(dt\) seconds is given by:</p>
+<p>$$\mathbb{P}(\text{Particle moving in direction } \omega \text{ scatters in next } dt \text{ seconds})$$</p>
+<p>$$= \left[\int_{\mathbb{S}^2} \sigma(\omega, \omega_o) \, d\Omega(\omega_o) \right] dt + o(dt) = \mu_s(\omega) \, dt + o(dt) \,.$$</p>
+<p>Let \(N[t, s]\) be the number of scattering events between times \(t\) and \(s\). We can determine the distribution of the scattering time \(T\) as follows (we simply write \(T\) here for a random variable with the distribution of \(\Delta T_i\)):</p>
+<p>$$\mathbb{P}(T \in dt(t)) = \mathbb{P}(N[0, t] = 0 \text{ and } N[t, t + dt] = 1)$$</p>
+<p>For disjoint intervals \(A\) and \(B\), a property of the \(Q\)-process is that \(N(A)\) and \(N(B)\) are independent. Therefore, we have that</p>
+<p>$$\mathbb{P}(T \in dt(t))$$</p>
+<p>$$= \mathbb{P}(N[0, t] = 0) \mathbb{P}(N[t, t + dt] = 1)$$</p>
+<p>$$= \mathbb{P}(N[t, t + dt] = 1) \prod_{n = 0}^{t / dt - 1} \mathbb{P}(N[n \, dt, (n + 1) \, dt] = 0) \,,$$</p>
+<p>We now use the fact that \(\mathbb{P}(N[t, t + dt] = 1) = \mu_s(\omega) \, dt + o(dt)\) and \(\mathbb{P}(N[t, t + dt] = 0) = 1 - \mu_s(\omega) \, dt + o(dt)\) to get:</p>
+<p>$$\mathbb{P}(T \in dt(t)) = (\mu_s(\omega) \, dt) \left(1 - \mu_s(\omega)dt \right)^{t / dt} \,.$$</p>
+<p>Recall that</p>
+<p>$$\lim_{n \rightarrow \infty} \left(1 - \frac{1}{n}\right)^n = e \,.$$</p>
+<p>Therefore, we get</p>
+<p>$$\mathbb{P}(T \in dt(t)) = \mu_s(\omega) e^{-\mu_s(\omega) t} \,.$$</p>
+<p>This is the exponential distribution with rate \(\lambda = \mu_s(\omega)\), hence the times between scattering events have distribution</p>
+<p>$$T \sim \text{Exp}(\mu_s(\omega)) \,.$$</p>
+<p>A nice outcome of this fact is that we can easily compute the mean scattering time to be:</p>
+<p>$$\mathbb{E}[T] = 1 / \mu_s(\omega) \,.$$</p>
+<p>The mean free path is therefore</p>
+<p>$$\ell = \mathbb{E}[cT] = c / \mu_s(\omega) \,.$$</p>
+<p>If the medium is isotropic (i.e., the function \(\sigma(\omega_i, \omega_o)\) is rotationally invariant), then \(\mu_s(\omega)\) does not depend on \(\omega\) and this can just be written as</p>
+<p>$$\ell = c / \mu_s \,.$$</p>
+<h3 id="full-eulerian-formulation">Full Eulerian Formulation</h3>
+<p>One can obtain a full Eulerian formulation for the evolution of \(\rho_t(x, \omega)\) as follows. Let us consider the number of particles in a set \(A\) with direction \(\omega\), i.e.,</p>
+<p>$$\int_A \rho_t(x, \omega) \, dx \,.$$</p>
+<p>The change in the number of particles in \(A\) moving in direction \(\omega\) is given by the particle flux through the boundary \(\partial A\) as well as the particles inside \(A\) that scatter either from some direction \(\omega_i\) to \(\omega\) or scatter from direction \(\omega\) to some direction \(\omega_o\). We can write this as</p>
+<p>$$\int_A \rho_{t + dt} (x, \omega) \, dx = \int_A \rho_{t} (x, \omega) \, dx $$</p>
+<p>$$- \, dt \int_{\partial A} \rho_t(x, \omega) (c \,\omega \cdot dn) + dt \int_A \mathcal{L}_\omega^\ast \rho_t(x, \omega) \, dx\,.$$</p>
+<p>The \(c \, dt \int_{\partial A} \rho_t(x, \omega) \cdot dn\) represents the sum of all particles that move out of the region \(A\) over a time interval \(dt\) and the \(dt \int_A \mathcal{L}_\omega^\ast \rho_t(x, \omega) \, dx\) represents the change in particle number from scattering inside the region \(A\) (as we derived two sections ago). Stokes' Theorem can be applied to the term over \(\partial A\) to get</p>
+<p>$$\int_A \rho_{t + dt} (x, \omega) \, dx = \int_A \rho_{t} (x, \omega) \, dx$$</p>
+<p>$$- c \, dt \int_{A} \omega \cdot \nabla_x \rho_t(x, \omega) \, dx + dt \int_A \mathcal{L}_\omega^\ast \rho_t(x, \omega) \, dx\,.$$</p>
+<p>Since this is true for any \(A\), it must be the case that</p>
+<p>$$\rho_{t + dt} (x, \omega) =  \rho_{t} (x, \omega) - c \, \omega \cdot \nabla_x \rho_t(x, \omega) \, dt +  \mathcal{L}_\omega^\ast \rho_t(x, \omega) \, dt \, .$$</p>
+<p>Now rearranging and letting \(dt \rightarrow 0\),</p>
+<p>$$\frac{\partial \rho_t}{\partial t}(x, \omega) = - c \, \omega \cdot \nabla_x \rho_t(x, \omega) +  \mathcal{L}_\omega^\ast \rho_t(x, \omega) \, .$$</p>
+<p>Voila. This is the Eulerian formulation of light transport in a homogenous medium with phase function \(\sigma(\omega_i, \omega_o)\). Writing it out in full gives:</p>
+<p>$$\frac{\partial \rho_t}{\partial t}(x, \omega) = - c \, \omega \cdot \nabla_x \rho_t(x, \omega) + \int_{\mathbb{S}^2} \rho_t(x, \omega') \sigma(\omega', \omega) \, d\Omega(\omega') - \mu_s(\omega) \rho_t(x, \omega).$$</p>
+<p>For comparison, the Langrangian form of these equations is<br>
+$$\frac{dX_t}{dt} = c \, W_t \,,$$</p>
+<p>where \(W_t\) is a \(Q\)-process on \(\mathbb{S}^2\) with generator \(\mathcal{L}\).</p>
+<h3 id="isotropic-scattering">Isotropic Scattering</h3>
+<p>The simplest example of a scattering medium is one that is fully isotropic, i.e., regardless of the incomming and outgoing directions \(\omega_i\) and \(\omega_o\), the rate of scattering is the same. That is,</p>
+<p>$$\sigma(\omega_i, \omega_o) = \sigma \,.$$</p>
+<p>Usually this is referred to as <strong>isotropic</strong> scattering. In this case, the scattering coefficient \(\mu_s\) does not depend on \(\omega\) and is easily calculated to be</p>
+<p>$$\mu_s = 4 \pi \sigma\,.$$</p>
+<p>The equations in the previous section now take on the form</p>
+<p>$$\frac{\partial \rho_t}{\partial t}(x, \omega) = - c \, \omega \cdot \nabla_x \rho_t(x, \omega) + \mu_s \bar{\rho_t}(x) - \mu_s \rho_t(x, \omega).$$</p>
+<p>Here \(\bar{\rho}_t\) is shorthand for the average photon density at \(x\) over all directions \(\omega\),</p>
+<p>$$\bar{\rho}_t(x) = \frac{1}{4\pi} \int_{\mathbb{S}^2} \rho_t(x, \omega) \, d\Omega(\omega) \,.$$</p>
+<h2 id="scattering-in-heterogenous-and-absorbing-media">Scattering in Heterogenous and Absorbing Media</h2>
+<p><img src="https://uniqueuptopermutation.github.io/content/images/2021/05/Hand-1.jpg" alt="Light scattering through someone's hand." loading="lazy"></p>
+<p>In the previous examples, we assumed that the scattering medium was the same everywhere, i.e., that the phase function \(\sigma(\omega_i, \omega_o)\) did not depend on \(x\). In this section, we see what happens when the phase function \(\sigma(\omega_i, \omega_o)\) does depend on \(x\). This is relatively common, many objects are not entirely uniform. For example, your hand scatters light, but your hand is not uniformly made of the same material. There's skin, muscle, bone, blood, etc. And each of these materials have different properties. How do we model this? Well, now the statistics of the direction \(\omega_t\) of a particle will depend heavily on that particle's position and path.</p>
+<p>If this is the case, then \(W_t\) is now a \(Q\)-process whose phase function \(\sigma(\omega_i, \omega_o)\) changes depending on the position \(X_t\) of the particle. We will write the new phase function as \(\sigma(x; \omega_i, \omega_o)\). This means that the generator of the process now depends explicitly on the value of \(x\). Hence, we have</p>
+<p>$$\mathcal{L}(x, \omega_i, \omega_o) = \sigma(x, \omega_i, \omega_o) - \mu_s(x, \omega_i) \, \delta(\omega_i, \omega_o) \,,$$</p>
+<p>where once again,</p>
+<p>$$\mu_s(x, \omega) = \int_{\mathbb{S}^2} \sigma(x, \omega, \omega_o) \, d\Omega(\omega_o) \,.$$</p>
+<p>In addition to this, we also give a particle a certain probability of being absorbed at any point in time. This probability is quantified by the absorption coefficient \(\mu_a(x, \omega)\) which is defined in a similar way to the phase function:</p>
+<p>$$\mathbb{P}(\text{Particle with direction } \omega \text{ at } x \text{ is absorbed over a period } dt)$$</p>
+<p>$$= \mu_a(x, \omega) \, dt + o(dt)$$</p>
+<p>What this means is that the \(Q\)-process \(W_t\) now has a chance of jump to a dead state from which it can never return. Therefore, the number of particles in a region \(A\) now changes over a small period \(dt\) according to:</p>
+<p>$$\int_A \rho_{t + dt}(x, \omega) \, dx = \int_A \rho_t(x, \omega) \,dx - \left[\int_{\partial A} \rho_t(x, \omega) (c\,\omega \cdot dn) \right] dt$$</p>
+<p>$$+ \, \left[\int_A \int_{\mathbb{S}^2} \rho_t(x, \omega_i)\, \sigma(x, \omega_i, \omega) \, d\Omega(\omega_i) \, dx \right] dt$$</p>
+<p>$$ - \, \left[ \int_A \int_{\mathbb{S}^2} \rho_t(x, \omega) \, \sigma(x, \omega, \omega_o) \, d\Omega(\omega_o) \, dx\right] dt $$</p>
+<p>$$- \left[\int_A \mu_a(x, \omega) \, \rho_t(x, \omega) \, dx\right]\, dt+ o(dt)\,.$$</p>
+<p>The terms with a \(dt\) factor represent, in order of appearence:</p>
+<ol>
+<li>The net number of particles that leave the region \(A\).</li>
+<li>The number of particles that are scattered in \(A\) from some direction \(\omega_i\) to \(\omega\)</li>
+<li>The number of particles that are scattered in \(A\) from \(\omega\) to some other direction \(\omega_o\).</li>
+<li>The number of particles absorbed in \(A\).</li>
+</ol>
+<p>Repeating the procedure of the previous section will give us:</p>
+<p>$$\frac{\partial \rho_t}{\partial t} (x, \omega) = - c \,\omega \cdot \nabla_x \rho_t(x, \omega) + \int_{\mathbb{S}^2} \rho_t(x, \omega_i)\, \sigma(x, \omega_i, \omega) \, d\Omega(\omega_i)$$</p>
+<p>$$- \, (\mu_s(x, \omega) + \mu_a(x, \omega)) \rho_t(x, \omega) \,.$$</p>
+<p>Alternatively, we can just write this as:</p>
+<p>$$\frac{\partial \rho_t}{\partial t} = \mathcal{L}_{x, \omega}^\ast \rho_t \,,$$</p>
+<p>Where the generator \(\mathcal{L}_{x, \omega}\) of the full joint process \((X_t, W_t)\) is given by:</p>
+<p>$$\mathcal{L}_{x, \omega} \rho(x, \omega) = c \, \omega \cdot \nabla_x \rho_t(x, \omega) + \int_{\mathbb{S}^2} \, \sigma(x, \omega, \omega_o) \rho_t(x, \omega_o)\, d\Omega(w_o)$$<br>
+$$ - \, (\mu_s(x, \omega) + \mu_a(x, \omega)) \rho_t(x, \omega)$$</p>
+<p>We have therefore derived the full radiative transport equation.</p>
+<h3 id="statistics-of-scattering-events">Statistics of Scattering Events</h3>
+<p>Let us assume for now that the scattering medium is non-absorbing, i.e., that \(\mu_a = 0\) everywhere. Just like in the homogenous case, every particle will have a series of scattering times \(T_1, T_2, ..., T_n, ...\). The difference now is that these scattering times depend explicitly on the path the photon is travelling along.</p>
+<p>We can calculate the statistics of scattering events by using the same trick as last time. Let \(N[t, s]\) be the number of scattering events in the time interval \([t, s]\). Suppose that the particle has direction \(\omega\) and is traveling along the ray \(X_t^{(0)} = X_0 + c \omega t\). The we have that:</p>
+<p>$$\mathbb{P}(T \in dt(t)) = \mathbb{P}(N[t, t + dt] = 1) \prod_{n = 0}^{t / dt - 1} \mathbb{P}(N[n \,dt, (n + 1) \,dt] = 0)$$</p>
+<p>$$ = \mu_s(X_t^{(0)}, \omega) \prod_{n = 0}^{t/dt - 1}\left(1 - \mu_s(X_{n\, dt}) dt \right)$$</p>
+<p>When \(x \ll 1\), we know that \(1 - x \sim \exp(-x)\). Therefore,</p>
+<p>$$1 - \mu_s(X_{n \, dt})dt \sim \exp(-\mu_s(X_{n \, dt}) \, dt ) \,.$$</p>
+<p>We then have:</p>
+<p>$$\mathbb{P}(T \in dt(t)) = \mu_s(X_t^{(0)}, \omega) \exp \left( -\sum_{n = 0}^{t / dt - 1} \mu_s(X_{n \, dt}^{(0)}, \omega) \, dt\right) \, dt\,. $$</p>
+<p>As \(dt \rightarrow 0\) this converges to</p>
+<p>$$\mathbb{P}(T \in dt(t)) = \mu_s(X_t^{(0)}, \omega) \exp \left( -\int_0^t \mu_s(X_{s}^{(0)}, \omega) \, ds\right) \, dt\,.$$</p>
+<p>Therefore, if one wishes to simulate a photon scattering in a heterogenous medium, one might sample scattering times from the above distribution.</p>
+<h3 id="statistics-of-absorption-events">Statistics of Absorption Events</h3>
+<p>The above section only covers scattering events. However, a photon may experience either a scattering or an absorption event while it is traversing through a medium. Recall, that photons travelling in direction \(\omega\) at a position \(x\) are absorbed at a rate \(\mu_a(\omega)\). Combining this with scattering events, at every time step of \(dt\), a photon has a probability \(\mu_a(\omega) \, dt\) of being absorbed and a \(\mu_s(\omega) \, dt\) probability of being scattered. Let \(A\) be the event where the photon is absorbed. Therefore, one can follow the derivation of the previous section to obtain:</p>
+<p>$$\mathbb{P}(T \in dt(t), A) = \mu_a(X_t^{(0)}, \omega) \exp\left(- \int_0^t \left(\mu_s(X_s^{(0)}, \omega) + \mu_a(X_s^{(0)}, \omega) \right) \, ds\right)\, dt$$</p>
+<p>$$\mathbb{P}(T \in dt(t), \bar{A}) = \mu_s(X_t^{(0)}, \omega) \exp\left(- \int_0^t \left(\mu_s(X_s^{(0)}, \omega) + \mu_a(X_s^{(0)}, \omega) \right) \, ds\right)\, dt$$</p>
+<p>Therefore, the probability that the photon is absorbed is given by:</p>
+<p>$$\mathbb{P}(A) = \int_0^\infty \mu_a(X_t^{(0)}, \omega) \exp\left(- \int_0^t \left(\mu_s(X_s^{(0)}, \omega) + \mu_a(X_s^{(0)}, \omega) \right) \, ds\right)\, dt$$</p>
+<p>Similarly, the probability that the photon is scattered is given by:</p>
+<p>$$\mathbb{P}(\bar{A}) = \int_0^\infty \mu_s(X_t^{(0)}, \omega) \exp\left(- \int_0^t \left(\mu_s(X_s^{(0)}, \omega) + \mu_a(X_s^{(0)}, \omega) \right) \, ds\right)\, dt$$</p>
+<p>If the media is <strong>homogenous</strong>, that is if \(\mu_s(x, \omega) = \mu_s(\omega)\) and \(\mu_a(x, \omega) = \mu_a(\omega)\), this reduces to:</p>
+<p>$$\mathbb{P}(A) = \frac{\mu_a(\omega)}{\mu_a(\omega) + \mu_s(\omega)} \,.$$</p>
+<p>$$\mathbb{P}(\bar{A}) = \frac{\mu_s(\omega)}{\mu_a(\omega) + \mu_s(\omega)} \,.$$</p>
+<h2 id="emissive-media">Emissive Media</h2>
+<p><img src="https://uniqueuptopermutation.github.io/content/images/2021/05/15-light-bulb-rex.jpg" alt="A light bulb emits photons." loading="lazy"></p>
+<p>In addition to absorbing and scattering light, a general medium can also emit photons. To quantify this emission, we introduce an emission rate \(j(x, \omega)\). The quantity of light emitted at \(x\) in direction \(\omega\) over a short period \(dt\) is given by</p>
+<p>$$j(x, \omega, t) \, dt \,.$$</p>
+<p>Therefore, it is relatively simple to see that we should update the Eulerian equations by adding a \(j(x, \omega)\) term to the right hand side:</p>
+<p>$$\frac{\partial \rho_t}{\partial t}(x, \omega) = \mathcal{L}_{x, \omega}^\ast \rho_t (x, \omega) + j(x, \omega, t)\,.$$</p>
+<p>Or written out in full:</p>
+<p>$$\frac{\partial \rho_t}{\partial t} (x, \omega) = - c \,\omega \cdot \nabla_x \rho_t(x, \omega) + \int_{\mathbb{S}^2} \rho_t(x, \omega_i)\, \sigma(x, \omega_i, \omega) \, d\Omega(\omega_i)$$</p>
+<p>$$- \, (\mu_s(x, \omega) + \mu_a(x, \omega)) \rho_t(x, \omega) + j(x, \omega, t)\,.$$</p>
+<p>Lights are examples of emissive materials.</p>
+<h2 id="steady-state-radiative-transfer">Steady-State Radiative Transfer</h2>
+<p>Often times, we aren't interested in the evolution of the distribution \(\rho_t(x, \omega)\) over a short time scale, but rather, we're interested in the average distribution over a very long time. Our eyes act like integrators, so if we want to talk about rendering, we care about the time averaged distribution of photons,</p>
+<p>$$\rho(x, \omega) = \lim_{T \rightarrow \infty} \frac{1}{T} \int_0^T \rho_t(x, \omega) \,.$$</p>
+<p>This time-averaged distribution should represent a sort of &quot;steady state&quot; of the system when a given \(j(x, \omega, t)\) is applied as an input. Computing this also requires time integrating out fluctuations in the emissive term \(j(x, \omega, t)\),</p>
+<p>$$\bar{j}(x, \omega) =  \lim_{T \rightarrow \infty} \frac{1}{T} \int_0^T j(x, \omega, t) \,.$$</p>
+<p>At equilibrium, we expect that the distribution of light no longer changes, so an easy way to compute it is to set</p>
+<p>$$\frac{\partial \rho}{\partial t} = 0\,.$$</p>
+<p>This can be written out as:</p>
+<p>$$c \,\omega \cdot \nabla_x \rho(x, \omega) + \int_{\mathbb{S}^2} \rho(x, \omega_i)\, \sigma(x, \omega_i, \omega) \, d\Omega(\omega_i)$$</p>
+<p>$$+ (\mu_s(x, \omega) + \mu_a(x, \omega)) \rho(x, \omega) = \bar{j}(x, \omega) \,.$$</p>
+<p>These are the elliptic equations for the steady state of a radiative transfer system. Note that the equations are linear in \(\rho\). Therefore, we know that the function \(\rho\) must be linear in \(\bar{j}\). This linearity can be written in terms of a scattering operator \(\mathcal{S}\) that acts on the function \(\bar{j}\). This function corresponds to applying the Green's function \(G\) of the elliptic equation above:</p>
+<p>$$\rho(x, \omega) = \mathcal{S} \bar{j}(x, \omega) = \int_{\mathbb{R}^3} \int_{\mathbb{S}^2} G(x, \omega, x', \omega') \, \bar{j}(x', \omega') \, d\Omega(\omega') \, dx' \,.$$</p>
+<h2 id="steady-state-transfer-with-boundary-conditions">Steady-State Transfer with Boundary Conditions</h2>
+<p>Often times we're not interested in scattering on the whole of \(\mathbb{R}^3\), but rather on some restricted domain \(D\). We can easily imagine the following question: given the geometry and makeup of someone's face, suppose we put a flashlight under it and want to know what the face will look like when after the light propagates through it.</p>
+<p>From such a problem to be well posed, we need to specify an ingoing light at the boundary. We will denote this as \(f(x, \omega)\) (for &quot;flashlight&quot;). \(f(x, \omega)\) is defined on the boundary \(x \in \partial D\) for ingoing directions \(\omega \cdot n &lt; 0\). Furthermore, we may have emissive materials inside the domain \(D\), which we will have to model with the function \(\bar{j}(x, \omega)\) defined on the interior of \(D\). Therefore, we have</p>
+<p>$$c \,\omega \cdot \nabla_x \rho(x, \omega) + \int_{\mathbb{S}^2} \rho(x, \omega_i)\, \sigma(x, \omega_i, \omega) \, d\Omega(\omega_i)$$</p>
+<p>$$+ \, (\mu_s(x, \omega) + \mu_a(x, \omega)) \rho(x, \omega) = \bar{j}(x, \omega), \qquad \text{for } x \in \text{int}(D)\,.$$</p>
+<p>And we have boundary conditions</p>
+<p>$$\rho(x, \omega) = f(x, \omega), \qquad \text{for } x \in \partial D \text{ and } \omega \cdot n(x) &lt; 0 \,.$$</p>
+<p>In the same way as before, the output \(\rho\) is linear in the inputs \(f\) and \(\bar{j}\). It can therefore be written as:</p>
+<p>$$\rho = \mathcal{S}_{\partial D} f + \mathcal{S}_{\text{int}(D)} \bar{j}\,,$$</p>
+<p>where \(\mathcal{S}_{\partial D}\) and \(\mathcal{S}_{\text{int}(D)}\) are scattering operators (from boundary \(\partial D\) to \(D\) and interior \(\text{int}(D)\) to \(D\) respectively). They also have corresponding Green's functions:</p>
+<p>$$\rho(x, \omega) = \int_{\partial D} \int_{\omega' \cdot n(x) &lt; 0} G_{\partial D} (x, \omega, x', \omega') \, d\Omega(\omega') \, dx' $$<br>
+$$+ \int_{\partial D} \int_{\mathbb{S}^2} G_{\text{int}(D)}(x, \omega') \, d\Omega(\omega') \, dx' \,.$$</p>
+<p>The Green's function \(G_{\partial D}(x, \omega, x', \omega')\) when the output is restricted to the boundary \(x \in \partial D\) and \(\omega \cdot n(x) &gt; 0\) is called the <strong>bidirectional scattering distribution function (BSDF)</strong> of the object \(D\).</p>
+<h2 id="radiant-flux-irradiance-and-radiance">Radiant Flux, Irradiance, and Radiance</h2>
+<p>There are some fundamental quantities that often get tossed around in computer graphics. Before moving on to other stuff, it is good to put everything together with standard temonology. Let us go through all the necessary terms one-by-one:</p>
+<ol>
+<li>
+<p><strong>Radiant Flux</strong> (across a surface \(S\)): The radiant flux through \(S\) is given by the energy that moves through \(S\) per unit time. Recall that the energy per particle is given by</p>
+<p>$$E = hc / \lambda$$</p>
+<p>Therefore, for monochromatic light with wavelength \(\lambda\), the radiance flux across \(S\) is given by:</p>
+<p>$$\Phi_t = \frac{dE}{dt} = \frac{hc}{\lambda} \int_{\mathbb{S}^2} \int_{S} \rho_t(x, \omega) (c \omega \cdot dn) \, d\Omega(\omega) $$</p>
+</li>
+<li>
+<p><strong>Irradiance</strong>: The irradiance at a location \(x\) on a surface \(S\) is a measure of the energy recieved/emitted by the surface per unit time per unit area. It is written as:</p>
+<p>$$I_t(x) = \frac{d\Phi}{dA} = \frac{hc}{\lambda} \int_{\mathbb{S}^2} \rho_t(x, \omega) (c \omega \cdot n(x)) \, d\Omega(\omega) $$</p>
+</li>
+<li>
+<p><strong>Radiance</strong>: The radiance at a location \(x\) and in direction \(\omega\) on a surface is a measure of the energy recieved/emitted by the surface per unit time per unit area per solid angle. It is often written:</p>
+<p>$$L_t(x, \omega) = \frac{d^2\Phi}{dA \, d\Omega} = \frac{dI}{d\Omega} = \frac{hc}{\lambda} \rho_t(x, \omega) (c \omega \cdot n(x)) $$</p>
+<p>It is common to write \(\omega \cdot n(x)\) as \(\cos\theta\) where \(\theta\) is the angle between the direction of the photon \(\omega\) and the normal \(n(x)\) of the surface,</p>
+<p>$$L_t(x, \omega) = \frac{hc^2}{\lambda} \rho_t(x, \omega) \cos \theta \,.$$</p>
+</li>
+</ol>
+<!--kg-card-end: markdown-->
+    </div>
+
+
+    <footer class="post-footer">
+
+        <div class="authors">
+            <a class="author-box" href="/author/philip/">
+                <img class="author-profile-image" src="https://uniqueuptopermutation.github.io/content/images/2021/04/9400185.jpeg" alt="Philip Etter" />
+                <section class="author-box-content">
+                    <div class="author-box-label">Author</div>
+                    <h5 class="author-box-name">Philip Etter</h5>
+                    <p>I&#x27;m a fourth year PhD student at the Stanford Institute for Computational and Mathematical Engineering. I like to identify as a mathemagician - and sometimes also an amateur composer.</p>
+                </section>
+            </a>
+        </div>
+
+    </footer>
+
+
+</section>
+
+<script>
+    var images = document.querySelectorAll('.kg-gallery-image img');
+    images.forEach(function (image) {
+        var container = image.closest('.kg-gallery-image');
+        var width = image.attributes.width.value;
+        var height = image.attributes.height.value;
+        var ratio = width / height;
+        container.style.flex = ratio + ' 1 0%';
+    })
+</script>
+
+
+            </div>
+        </main>
+
+        <div id="sidebar">
+    <div class="inner">
+
+            <nav id="menu">
+    <header class="major">
+        <h2>Menu</h2>
+    </header>
+    <ul class="links">
+        <li class="nav-home "><a href="https://uniqueuptopermutation.github.io/">Home</a></li>
+        <li class="nav-about-me "><a href="https://uniqueuptopermutation.github.io/about/">About Me</a></li>
+        <li class="nav-papers "><a href="https://uniqueuptopermutation.github.io/papers/">Papers</a></li>
+        <li class="nav-projects "><a href="https://uniqueuptopermutation.github.io/projects/">Projects</a></li>
+        <li class="nav-tutorials "><a href="https://uniqueuptopermutation.github.io/tutorials/">Tutorials</a></li>
+        <li class="nav-github "><a href="https://github.com/UniqueUpToPermutation">Github</a></li>
+        <li class="nav-resume "><a href="https://cap.stanford.edu/profiles/viewResume?facultyId=180315&name=Philip_Etter">Resume</a></li>
+    </ul>
+</nav>
+
+        <section>
+            <header class="major">
+                <h2>Recent Posts</h2>
+            </header>
+            <div class="mini-posts">
+                    <article>
+                        <h3><a href="/renderingtheory1/">Rendering Theory I: Radiative Transport</a></h3>
+                        <p>The first in a series of tutorials about the mathematical underpinnings of offline and real-time physically based rendering. This tutorial covers the differential formulation of radiative transport.</p>
+                    </article>
+                    <article>
+                        <h3><a href="/coarse-proxy-model-order-reduction-for-integral-equations/">Coarse Proxy Reduced Basis Methods for Integral Equations</a></h3>
+                        <p>In this paper, we present a novel method for building reduced basis models for integral equations.</p>
+                    </article>
+                    <article>
+                        <h3><a href="/diffeqstochasticspart2/">Differential Equations from Stochastic Processes: Part II</a></h3>
+                        <p>A tutorial on the deep connection between elliptic/parabolic systems and stochastic processes. The connection gives a lot of useful intuition about how to interpret elliptic/parabolic PDEs as well as Laplacian systems on graphs. Part II covers continuous time stochastic processes.</p>
+                    </article>
+            </div>
+        </section>
+
+
+        <footer id="footer">
+            <p class="copyright">&copy; Philip Etter&#x27;s Mathematical Corner - All rights reserved<br>
+            Design: <a href="https://html5up.net" target="_blank" rel="noopener">HTML5 UP</a>, Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></p>
+        </footer>
+
+    </div>
+</div>
+
+    </div>
+
+    <script src="/assets/main/js/jquery.min.js?v=0e521d223a"></script>
+    <script src="/assets/main/js/browser.min.js?v=0e521d223a"></script>
+    <script src="/assets/main/js/breakpoints.min.js?v=0e521d223a"></script>
+    <script src="/assets/main/js/util.js?v=0e521d223a"></script>
+    <script src="/assets/main/js/main.js?v=0e521d223a"></script>
+
+    
+
+</body>
+</html>

@@ -6,6 +6,7 @@
 
     <title>Coarse Proxy Reduced Basis Methods for Integral Equations</title>
 
+    <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="canonical" href="https://uniqueuptopermutation.github.io/coarse-proxy-model-order-reduction-for-integral-equations/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     
@@ -16,7 +17,7 @@
     <meta property="og:url" content="https://uniqueuptopermutation.github.io/coarse-proxy-model-order-reduction-for-integral-equations/" />
     <meta property="og:image" content="https://uniqueuptopermutation.github.io/content/images/2021/04/25564_Crop-7.jpg" />
     <meta property="article:published_time" content="2021-04-23T19:37:56.000Z" />
-    <meta property="article:modified_time" content="2021-04-23T19:37:56.000Z" />
+    <meta property="article:modified_time" content="2021-04-23T20:26:41.000Z" />
     <meta property="article:tag" content="Math" />
     <meta property="article:tag" content="Research" />
     <meta property="article:tag" content="Reduced Basis" />
@@ -43,9 +44,9 @@
         "url": "https://uniqueuptopermutation.github.io/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://uniqueuptopermutation.github.io/favicon.ico",
-            "width": 48,
-            "height": 48
+            "url": "https://uniqueuptopermutation.github.io/favicon.png",
+            "width": 60,
+            "height": 60
         }
     },
     "author": {
@@ -65,7 +66,7 @@
     "headline": "Coarse Proxy Reduced Basis Methods for Integral Equations",
     "url": "https://uniqueuptopermutation.github.io/coarse-proxy-model-order-reduction-for-integral-equations/",
     "datePublished": "2021-04-23T19:37:56.000Z",
-    "dateModified": "2021-04-23T19:37:56.000Z",
+    "dateModified": "2021-04-23T20:26:41.000Z",
     "keywords": "Math, Research, Reduced Basis",
     "description": "In this paper, we present a novel method for building reduced basis models for integral equations.",
     "mainEntityOfPage": {
@@ -649,7 +650,7 @@
 <body class="amp-template">
     <header class="page-header">
         <a href="https://uniqueuptopermutation.github.io">
-                Philip Etter&#x27;s Mathematical Corner
+                <amp-img class="site-icon" src="https://uniqueuptopermutation.github.io/content/images/2021/05/asdf-1.png" width="50" height="50" layout="fixed"></amp-img>
         </a>
     </header>
 
@@ -688,13 +689,14 @@
 <p>$$ (\mathbf{\Phi}^T \mathbf{A}(\mu') \mathbf{\Phi}) \mathbf{y} = \mathbf{\Phi}^T \mathbf{b}(\mu')$$</p>
 <p>And then approximate:</p>
 <p>$$ \mathbf{x}(\mu') \approx \mathbf{\Phi} \mathbf{y} $$</p>
-<p>We can see an example of a reduced basis \( \mathbf{\Phi}\)  below:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>An example of a reduced basis \( \mathbf{\Phi} \) we generate in our paper for a radiative transport problem. </figcaption></figure><p>There is a critical issue with mixing reduced basis methods and integral equations however. <strong>Namely, most reduced basis techniques have been specially developed for the type of sparse operators that typically appear in differential equations problems</strong>. The operators in the integral equations world are extremely dense in comparison and forming the reduced operator \( \mathbf{\Phi}^T \mathbf{A}(\mu') \mathbf{\Phi} \) is difficult to do outright or using existing reduced basis techniques (discrete empirical interpolation, etc.).</p><p>There is also another issue: <strong>How to efficiently choose the samples \( \mu_1, ..., \mu_n \)? </strong>Our new method addresses both of these issues by introducing the idea of <strong>coarse proxy models</strong>.</p><p>A <strong>coarse proxy</strong> <strong>model</strong> for a physics model<strong> </strong>is essentially an <em>a priori</em> sloppy estimate of the output we care about. For example, instead of computing a solution on a 1024 x 1024 grid, we can compute a solution on a 64 x 64. The important part is that the coarse solution gives some impression as to the "important" parameter instances. By using a column pivoted QR factorization of these sloppy coarse outputs, we can identify the "important" parameters \( \mu_1, ..., \mu_n \) in the sample space and build a reduced basis model by solving the full physics model for each of these parameters. </p><p>Furthermore, by explicitly assembling important samples of the dense corresponding operators \( \mathbf{A}(\mu_1), ..., \mathbf{A}(\mu_n) \) (which cannot be assembled in full). We can compute interpolation weights that we allow us to form reduced operators for new parameters \( \mu' \) by interpolating explicitly computed reduced operators \( \mathbf{\Phi}^T \mathbf{A}(\mu_1) \mathbf{\Phi}\), \(...\), \(\mathbf{\Phi}^T \mathbf{A}(\mu_n) \mathbf{\Phi} \) by utilizing samples from of the dense operator \( \mathbf{A}(\mu') \). This allows us to efficiently approximate new reduced operators.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>An overview of our novel technique.</figcaption></figure><p>We demonstrate in our paper that this technique has the ability to substantially reduce computation time when solving a large collection of parameterized integral equations. Our examples include problems in radiative transport as well as integral formulations of the Laplace equation. We can achieve significant speedups without much sacrifice to accuracy.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>A comparison between a reference ground truth (ref) and our method (RBM), error is given on the right.</figcaption></figure>
+<p>We can see an example of a reduced basis \( \mathbf{\Phi}\)  below:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>An example of a reduced basis \( \mathbf{\Phi} \) we generate in our paper for a radiative transport problem. </figcaption></figure><p>There is a critical issue with mixing reduced basis methods and integral equations however. <strong>Namely, most reduced basis techniques have been specially developed for the type of sparse operators that typically appear in differential equations problems</strong>. The operators in the integral equations world are extremely dense in comparison and forming the reduced operator \( \mathbf{\Phi}^T \mathbf{A}(\mu') \mathbf{\Phi} \) is difficult to do outright or using existing reduced basis techniques (discrete empirical interpolation, etc.).</p><p>There is also another issue: <strong>How to efficiently choose the samples \( \mu_1, ..., \mu_n \)? </strong>Our new method addresses both of these issues by introducing the idea of <strong>coarse proxy models</strong>.</p><p>A <strong>coarse proxy</strong> <strong>model</strong> for a physics model<strong> </strong>is essentially an <em>a priori</em> sloppy estimate of the output we care about. For example, instead of computing a solution on a 1024 x 1024 grid, we can compute a solution on a 64 x 64. The important part is that the coarse solution gives some impression as to the "important" parameter instances. By using a column pivoted QR factorization of these sloppy coarse outputs, we can identify the "important" parameters \( \mu_1, ..., \mu_n \) in the sample space and build a reduced basis model by solving the full physics model for each of these parameters. </p><p>Furthermore, by explicitly assembling important samples of the dense corresponding operators \( \mathbf{A}(\mu_1), ..., \mathbf{A}(\mu_n) \) (which cannot be assembled in full). We can compute interpolation weights that we allow us to form reduced operators for new parameters \( \mu' \) by interpolating explicitly computed reduced operators \( \mathbf{\Phi}^T \mathbf{A}(\mu_1) \mathbf{\Phi}\), \(...\), \(\mathbf{\Phi}^T \mathbf{A}(\mu_n) \mathbf{\Phi} \) by utilizing samples from of the dense operator \( \mathbf{A}(\mu') \). This allows us to efficiently approximate new reduced operators.</p><p>We demonstrate in our paper that this technique has the ability to substantially reduce computation time when solving a large collection of parameterized integral equations. Our examples include problems in radiative transport as well as integral formulations of the Laplace equation. We can achieve significant speedups without much sacrifice to accuracy.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>A comparison between a reference ground truth (ref) and our method (RBM), error is given on the right.</figcaption></figure>
 
             </section>
 
         </article>
     </main>
     <footer class="page-footer">
+            <amp-img class="site-icon" src="https://uniqueuptopermutation.github.io/content/images/2021/05/asdf-1.png" width="50" height="50" layout="fixed"></amp-img>
         <h3>Philip Etter&#x27;s Mathematical Corner</h3>
             <p>Applied Mathematics and Data Science</p>
         <p><a href="https://uniqueuptopermutation.github.io">Read more posts →</a></p>
