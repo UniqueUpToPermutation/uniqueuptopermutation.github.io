@@ -4,7 +4,7 @@
 const nextConfig = {
   output: "export",
   images: {
-    loader: 'akamai',
+    unoptimized: true,
     path: '',
   },
 };
