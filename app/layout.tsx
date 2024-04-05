@@ -2,14 +2,15 @@ import Footer from "@/app/_components/footer";
 import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Alert from "@/app/_components/alert";
 
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `Philip Etter's Website`,
-  description: `Philip Etter's Profession Website: Data Science, AI, and Physics`,
+  title: `Philip Etter`,
+  description: `Philip Etter's Professional Website: Data Science, AI, and Physics`,
   openGraph: {
     images: [HOME_OG_IMAGE_URL],
   },
@@ -56,7 +57,10 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen">{children}</div>
+        <div className="min-h-screen">
+          <Alert/>
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
