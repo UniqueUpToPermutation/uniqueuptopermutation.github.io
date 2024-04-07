@@ -10,6 +10,15 @@ ogImage:
   url: "/assets/blog/dynamic-routing/cover.jpg"
 ---
 
+> TESTING. We're gonna see what happens to this pretty cool thing that is pretty cool.
+
+* asdfasdf
+* fewfwefwef
+* fe fe fe ef 
+  * asdfasdf
+  * asdfasdf
+    * asdfasdfasdf
+
 # Testing Math 
 
 ```math

@@ -22,10 +22,8 @@
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "remark-math": "^6.0.0",
-    "remark-mdx": "^3.0.1",
     "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.1.0",
-    "unified": "^11.0.4"
+    "remark-rehype": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
