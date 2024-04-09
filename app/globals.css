@@ -24,11 +24,13 @@ body {
 }
 
 .circular-image-container {
-  width: 300px; /* Adjust the width of the container as needed */
-  height: 300px; /* Adjust the height of the container as needed */
+  width: 300px; 
+  height: auto; 
   border-radius: 50%; /* Make the container circular */
   overflow: hidden; /* Ensure the image stays within the circular shape */
   position: relative; /* Make sure the image is positioned correctly */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3); /* Add drop shadow */
+  max-width: 100%;
 }
 
 .circular-image {
@@ -40,4 +42,42 @@ body {
 
 .main-name-title {
   text-align: left;
+}
+
+.main-hover-link {
+  transition: color 0.3s; /* Apply a transition effect to the color change */
+}
+
+.main-hover-link:hover {
+  color: blue; /* Set the color of the link when hovering over it */
+}
+
+.main-blurb {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 15px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.main-blurb:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+
+.main-blurb-text {
+  color:rgb(128, 128, 128);
+  max-width: 850px;
+  text-align: center;
+  font-family: 'Roboto';
+  margin-bottom: 0px;
+  font-size: 22px;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }

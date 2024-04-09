@@ -1,0 +1,33 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem;
+}
+
+.innersection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.item {
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: rgb(235, 235, 235);
+}
+
+.resumeimg {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resumeimginside {
+    max-width: 100%; /* Ensure image doesn't exceed the container's width */
+    max-height: 100%; /* Ensure image doesn't exceed the container's height */
+}

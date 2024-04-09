@@ -61,7 +61,6 @@ export default function RootLayout({
           <Alert/>
           {children}
         </div>
-        <Footer />
       </body>
     </html>
   );
