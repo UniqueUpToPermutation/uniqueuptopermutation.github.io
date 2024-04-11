@@ -29,7 +29,7 @@
 }
 
 .markdown ul li {
-  margin-left: 20px;
+  margin-left: 5%;
   list-style: disc;
   list-style-type: disc;
 }
@@ -54,4 +54,28 @@
   padding-left: 25px;
   padding-right: 25px;
   quotes: "\201C""\201D""\2018""\2019";
+}
+
+.markdown ol li {
+  margin-left: 5%;
+  list-style-type: upper-roman;
+}
+
+.markdown a {
+  color: blue;
+}
+
+.markdown p img {
+  align-self: center;
+}
+
+.time {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.bodytext {
+  max-width: 65%;
+  margin-left: auto;
+  margin-right: auto;
 }
