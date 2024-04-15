@@ -1,6 +1,6 @@
 ---
 title: "Paper: Coarse Proxy Reduced Basis Methods for Integral Equations"
-excerpt: "In this paper, we present a novel method for building reduced basis models for integral equations. This paper was published in Journal of Computational Physics in 2023."
+excerpt: "In this paper, we present a novel method for building reduced basis models for integral equations. The method works by using a column-pivoted QR algorithm together with a coarse proxy model to select a skeleton training set and construct a reduced basis from this skeleton set. We combine this with a novel operator interpolation technique specifically designed for integral equations to overcome the typical challenges of model reduction for non-local operators. We demonstrate our results on integral equation formulations of the radiative transport equation and a boundary integral formulation of the Laplace equation."
 coverImage: "/assets/blog/coarse-proxy/basis2.png"
 date: "2023-02-15"
 author:
