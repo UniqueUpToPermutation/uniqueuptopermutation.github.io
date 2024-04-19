@@ -20,7 +20,7 @@ In this paper, we examine linear systems corrupted by noise and consider the pro
 $$
 \hat{\mathbf{A}} \hat{\mathbf{x}} = \mathbf{b} \,,
 $$
-where $\hat{\mathbf{A}}$ is a symmetric positive definite matrix sampled from some distribution $\mathcal{D}_\mu$ parameterized by some set of variables $\mu$. For example, $\hat{\mathbf{A}}$ might be a scattering operator across an inhomogenous background medium, where $\mu$ represents the background. Our work assumes that while the true $\mu$ may be unknown (i.e., we only have access to a noisy sample $\hat{\mu}$ of $\mu$), we have a model for how the sample $\hat{\mu}$ may be produced from the ground truth $\mu$. The goal is then to try to approximate the solution of the "ground truth" linear system
+where $\hat{\mathbf{A}}$ is a symmetric positive definite matrix sampled from a distribution $\mathcal{D}_\mu$ parameterized by a set of variables $\mu$. For example, $\hat{\mathbf{A}}$ may be the Hessian of a mini-batch of a machine learning optimization problem. Or perhaps, $\hat{\mathbf{A}}$ might be a scattering operator across an inhomogenous background medium, where $\mu$ represents the background. Our work assumes that while the true $\mu$ may be unknown (i.e., we only have access to a noisy sample $\hat{\mu}$ of $\mu$), we have a model for how the sample $\hat{\mu}$ may be produced from the ground truth $\mu$. The goal is then to try to approximate the solution of the "ground truth" linear system
 $$
 \mathbf{A} \mathbf{x} = \mathbf{b} \,,
 $$
@@ -52,10 +52,10 @@ $$
 $$
 In this respect, the approach is reminiscent of [James-Stein estimation](https://en.wikipedia.org/wiki/James%E2%80%93Stein_estimator), except applied to matrix inverses instead of vector quantities. Like Stein estimation, the key to the approach is to try to estimate the shift factor $\beta^*$ which produces the largest reduction in estimation error,
 $$
-\min_{\beta} \mathbb{E} \|\mathbf{\hat{A}}^{-1} + \beta \mathcal{K}(\mathbf{\hat{A}}) - A^{-1}\|_B^2 \,.
+\min_{\beta} \mathbb{E} \|\mathbf{\hat{A}}^{-1} + \beta \mathcal{K}(\mathbf{\hat{A}}) - A^{-1}\|_B^2 \,,
 $$
 
-Why do we expect this procedure to be effective? Well, there are two fundamental reasons. One of them is related to James-Stein estimation and the other is a special property of the matrix inverse. 
+where $\|\cdot\|_B$ is an arbitrary matrix inner product norm. Why do we expect this procedure to be effective? Well, there are two fundamental reasons. One of them is related to James-Stein estimation and the other is a special property of the matrix inverse. 
 
 ![Jensen](/assets/blog/elliptic-op/jensen.png)
 
