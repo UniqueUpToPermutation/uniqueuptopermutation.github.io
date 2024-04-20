@@ -12,7 +12,7 @@ ogImage:
 
 ### Published in SIAM Journal on Mathematics of Data Science
 
-[Paper Link $$\rightarrow$$](https://epubs.siam.org/doi/abs/10.1137/21M1416849) $$\qquad$$
+[Paper Link $$\rightarrow$$](https://epubs.siam.org/doi/abs/10.1137/21M1416849)
 
 ## Introduction
 
