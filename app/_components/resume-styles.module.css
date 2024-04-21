@@ -1,3 +1,7 @@
+/*
+#3d5a80 // #98c1d9 // #e0fbfc // #ee6c4d //#293241
+*/
+
 .section {
     display: flex;
     flex-direction: column;
@@ -17,10 +21,21 @@
     border-radius: 20px;
     border-width: 2px;
     border-color: rgb(235, 235, 235);
+    align-items: center; /* Vertically center items */
+}
+
+.iteminner {
+    flex: auto;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .resumeimg {
     width: 150px;
+    min-width: 150px;
     height: 150px;
     display: flex;
     justify-content: center;
@@ -30,4 +45,44 @@
 .resumeimginside {
     max-width: 100%; /* Ensure image doesn't exceed the container's width */
     max-height: 100%; /* Ensure image doesn't exceed the container's height */
+}
+
+.button {
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 200px;
+    transition: 0.2s;  
+}
+
+.brick {
+    background-color: #3d5a80;
+    color: white
+}
+
+.link {
+    background-color: #3d5a80; /* Green */
+    color: white;
+}
+
+.link:hover {
+    /* Color when hovered over */
+    background-color: #ee6c4d; /* Green */
+}
+
+.itembottom {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+    flex: auto;
+    gap: 20px;
+}
+
+.programimg {
+    max-width: 90px;
 }

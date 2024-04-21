@@ -58,7 +58,6 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <div className="min-h-screen">
-          <Alert/>
           {children}
         </div>
       </body>

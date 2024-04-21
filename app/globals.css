@@ -6,12 +6,6 @@
   --foreground-rgb: 0, 0, 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-  }
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-end-rgb));
@@ -70,7 +64,7 @@ body {
   color:rgb(128, 128, 128);
   max-width: 850px;
   text-align: center;
-  font-family: 'Roboto';
+  font-family: 'Arial';
   margin-bottom: 0px;
   font-size: 22px;
 }
@@ -80,4 +74,16 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  .main-blurb-text {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-blurb-text {
+    font-size: 16px;
+  }
 }

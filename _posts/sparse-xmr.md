@@ -12,7 +12,7 @@ ogImage:
 
 ### Published in the Proceedings of the Web Conference 2022
 
-[Full Text $\rightarrow$](https://arxiv.org/pdf/2106.02697.pdf)
+[Paper Link $\rightarrow$](https://dl.acm.org/doi/10.1145/3485447.3511973) $\qquad$ [Preprint $\rightarrow$](https://arxiv.org/pdf/2106.02697.pdf)
 
 ## Introduction
 
@@ -104,11 +104,17 @@ where $S(\mathbf{x}_j)$ and $S(\mathbf{W}^{(i)})$ denote the indices of the nonz
 
 We remark that it remains to specify how to efficiently iterate over the nonzero entries $x_{jk}$ and nonzero rows $\mathbf{K}^{(k, i)}$ for $k \in S(\mathbf{x}_j) \cap S(\mathbf{W}^{(i)})$. This is essential for computing the vector-chunk product $\mathbf{x}_j \mathbf{W}^{(i)}$ efficiently. There are number of ways to do this, each with potential benefits and drawbacks:
 
-1. **Marching Pointers**:
-2. **Binary Search**:
-3. **Hash-Map**:
-4. **Dense Lookup**:
+1. **Marching Pointers**: The easiest method is to use a marching pointer scheme to iterate over $x_{jk}$ and $\mathbf{K}^{(k,i)}$ for $k \in S(\mathbf{x}_j) \cap S(\mathbf{K}^{(i)})$. 
+2. **Binary Search**:  Since $\mathbf{x}$ can be highly sparse, the second possibility is to do marching pointers, but instead of incrementing pointers one-by-one to find all intersections, we use binary search to quickly find the next intersection.
+3. **Hash-Map**: The third possibility is to enable fast random access to the rows of $\mathbf{K}^{(i)}$ via a hash-map. The hash-map maps indices $i$ to nonzero rows of $\mathbf{K}^{(i)}$. 
+4. **Dense Lookup**: The last possibility is to accelerate the above hash-map access by copying the contents of the hash-map into a dense array of length $d$. Then, a random access to a row of $\mathbf{K}^{(i)}$ is done by an array lookup. This consumes the most memory.
 
-[To be finished]
+There is one final optimization that we have found particularly helpful in reducing inference time --- and that is evaluating the nonzero blocks $\mathbf{A}^{(j, i)}$ in order of column chunk $i$. Doing this ensures that a single chunk $\mathbf{K}^{(i)}$ ideally only has to enter the cache once for all the nonzero blocks $\mathbf{A}^{(j, i)}$ whose values depend on $\mathbf{K}^{(i)}$.
 
+## Performance Benchmarks
 
+There are more thorough performance benchmarks in the paper. But for this blog post, I will simply show a side by side comparison of our Hash MSCM implementation against a Hash CSC implementation of an existing XMR library, NapkinXC. Since NapkinXC models can be run in PECOS (our library), we have an apples-to-apples performance comparison. We measure performance on several different data sets:
+
+![](/assets/blog/sparse-xmr/performance.png)
+
+Note that thanks to MSCM, our implementation is around 10x faster than NapkinXC. See the full text for more exhaustive performance analysis. 
