@@ -150,9 +150,15 @@ export function Resume() {
         <ResumeSection title="Work Experience">
           <ResumeItem
             image={(<ResumeImage innerWidth={130} src="/assets/resume/meta-logo.svg"/>)}>
+              <ResumeItemTitle>Meta (Promotion)</ResumeItemTitle>
+              <ResumeItemSubtitle>Research Scientist L5</ResumeItemSubtitle>
+              <ResumeItemInfo>2024 — Current</ResumeItemInfo>
+          </ResumeItem>
+          <ResumeItem
+            image={(<ResumeImage innerWidth={130} src="/assets/resume/meta-logo.svg"/>)}>
               <ResumeItemTitle>Meta</ResumeItemTitle>
-              <ResumeItemSubtitle>Research Scientist</ResumeItemSubtitle>
-              <ResumeItemInfo>2022 — Current</ResumeItemInfo>
+              <ResumeItemSubtitle>Research Scientist L4</ResumeItemSubtitle>
+              <ResumeItemInfo>2022 — 2024</ResumeItemInfo>
           </ResumeItem>
           <ResumeItem 
             image={(<ResumeImage innerWidth={130} src="/assets/resume/meta-logo.svg"/>)}>

@@ -37,7 +37,7 @@ export default function Home() {
           <div className="main-blurb">
             <h2 className={`tracking-tight main-blurb-text`}>
               Hi! 👋 I{"'"}m a computational mathematician working at Meta. 
-              I use data science and AI techniques to accelerate high-fidelity computational models.
+              I use model reduction and AI techniques to accelerate high-fidelity computational models.
               Applications of my research run the gamut from real-time interactive elasticity to extreme multilabel ranking! 
             </h2>
           </div>
